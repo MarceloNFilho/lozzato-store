@@ -37,10 +37,6 @@ const Header = () => {
         </SheetTrigger>
 
         <SheetContent side="left">
-          <SheetHeader className="text-left text-lg font-semibold">
-            Menu
-          </SheetHeader>
-
           {status === "authenticated" && data?.user && (
             <div className="flex flex-col">
               <div className="flex items-center gap-2 py-4">
