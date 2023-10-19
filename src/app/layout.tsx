@@ -8,7 +8,7 @@ import Footer from "@/components/ui/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lozzato Store"
+  title: "Lozzato Store",
 };
 
 export default function RootLayout({
@@ -19,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <Header />
-          {children}
-          <Footer />
-        </AuthProvider>
+        <div className="flex flex-col">
+          <AuthProvider>
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </AuthProvider>
+        </div>
       </body>
     </html>
   );
