@@ -121,7 +121,7 @@ const Header = () => {
             quality={100}
             className="h-auto max-h-5 w-fit object-contain"
           />
-          <p className="-mt-1 text-end font-mono text-[10px] font-medium uppercase text-primary-foreground">
+          <p className="-mt-1 text-end font-mono text-xs font-semibold uppercase text-primary">
             Store
           </p>
         </div>
