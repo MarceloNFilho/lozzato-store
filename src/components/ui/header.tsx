@@ -111,7 +111,7 @@ const Header = () => {
       </Sheet>
 
       <Link href={"/"}>
-        <div className="flex flex-col gap-1">
+        <div className="flex w-fit flex-col gap-1">
           <Image
             src={logo}
             alt=""
@@ -119,9 +119,9 @@ const Header = () => {
             height={0}
             sizes="100vw"
             quality={100}
-            className="h-auto max-h-5 w-fit object-contain"
+            className="h-auto max-h-6 w-fit object-contain"
           />
-          <p className="-mt-1 text-center font-mono text-xs font-semibold uppercase text-primary">
+          <p className="-mt-1 text-end font-mono text-xs font-semibold uppercase text-primary">
             Store
           </p>
         </div>
