@@ -18,6 +18,7 @@ import { Separator } from "./separator";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/lozzato-store-logo.svg";
+import Cart from "./cart";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -126,9 +127,17 @@ const Header = () => {
         </div>
       </Link>
 
-      <Button size="icon" variant="outline" className="p-2">
-        <ShoppingCartIcon />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline" className="p-2">
+            <ShoppingCartIcon />
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent>
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
   );
 };
