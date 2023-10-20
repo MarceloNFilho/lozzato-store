@@ -16,6 +16,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../public/lozzato-store-logo.svg";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -108,9 +110,20 @@ const Header = () => {
       </Sheet>
 
       <Link href={"/"}>
-        <h1 className="text-lg font-semibold">
-          Lozzato <span className="text-primary">Store</span>
-        </h1>
+        <div className="flex flex-col gap-1">
+          <Image
+            src={logo}
+            alt=""
+            width={0}
+            height={0}
+            sizes="100vw"
+            quality={100}
+            className="h-auto max-h-5 w-fit object-contain"
+          />
+          <p className="-mt-1 text-end font-mono text-[10px] font-medium uppercase text-primary-foreground">
+            Store
+          </p>
+        </div>
       </Link>
 
       <Button size="icon" variant="outline" className="p-2">
