@@ -22,10 +22,41 @@ const Cart = () => {
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <CartItem
-                key={product.id}
-                product={computeProductTotalPrice(product as any) as any}
-              />
+              <>
+                <CartItem
+                  key={product.id}
+                  product={computeProductTotalPrice(product as any) as any}
+                />
+
+                <div className="flex flex-col gap-3">
+                  <Separator />
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs">Subtotal</p>
+                    <p className="text-xs">R$ {subtotal.toFixed(2)}</p>
+                  </div>
+
+                  <Separator />
+
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs">Entrega</p>
+                    <p className="text-xs uppercase">grátis</p>
+                  </div>
+
+                  <Separator />
+
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs">Descontos</p>
+                    <p className="text-xs">- R$ {totalDiscount.toFixed(2)}</p>
+                  </div>
+
+                  <Separator />
+
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-bold">Total</p>
+                    <p className="text-sm font-bold">R$ {total.toFixed(2)}</p>
+                  </div>
+                </div>
+              </>
             );
           })
         ) : (
@@ -33,35 +64,6 @@ const Cart = () => {
             Carrinho vazio.
           </p>
         )}
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <Separator />
-        <div className="flex items-center justify-between">
-          <p className="text-xs">Subtotal</p>
-          <p className="text-xs">R$ {subtotal.toFixed(2)}</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between">
-          <p className="text-xs">Entrega</p>
-          <p className="text-xs uppercase">grátis</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between">
-          <p className="text-xs">Descontos</p>
-          <p className="text-xs">- R$ {totalDiscount.toFixed(2)}</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-bold">Total</p>
-          <p className="text-sm font-bold">R$ {total.toFixed(2)}</p>
-        </div>
       </div>
     </div>
   );
