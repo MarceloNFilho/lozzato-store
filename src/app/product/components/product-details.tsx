@@ -2,7 +2,9 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Cart from "@/components/ui/cart";
 import DiscountBadge from "@/components/ui/discount-badge";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ProductWithTotalPrice } from "@/helpers/products";
 import { CartContext } from "@/providers/cart";
 import { ArrowDown, ArrowLeft, ArrowRight, TruckIcon } from "lucide-react";
@@ -65,12 +67,20 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         <p className="text-justify text-sm opacity-60">{product.description}</p>
       </div>
 
-      <Button
-        className="mt-8 font-bold uppercase"
-        onClick={HandleAddProductToCart}
-      >
-        Adicionar ao carrinho
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            className="mt-8 font-bold uppercase"
+            onClick={HandleAddProductToCart}
+          >
+            Adicionar ao carrinho
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent>
+          <Cart />
+        </SheetContent>
+      </Sheet>
 
       <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
         <div className="flex items-center gap-3">
