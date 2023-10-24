@@ -10,7 +10,6 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 import { Button } from "./button";
-import { Card } from "./card";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
@@ -32,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <Card className="flex items-center justify-between p-5">
+    <div className="flex items-center justify-between p-5 lg:min-w-[1120px] lg:max-w-[1120px] lg:p-0 lg:py-5">
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="p-2">
@@ -133,7 +132,7 @@ const Header = () => {
           <Cart />
         </SheetContent>
       </Sheet>
-    </Card>
+    </div>
   );
 };
 
