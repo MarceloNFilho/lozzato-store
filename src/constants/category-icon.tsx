@@ -1,5 +1,5 @@
 import {
-  KeyboardIcon,
+  Keyboard,
   MouseIcon,
   HeadphonesIcon,
   MonitorIcon,
@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 export const CATEGORY_ICON = {
-  keyboard: <KeyboardIcon size={16} />,
+  keyboard: <Keyboard size={16} />,
   mouses: <MouseIcon size={16} />,
   headphones: <HeadphonesIcon size={16} />,
   monitors: <MonitorIcon size={16} />,
