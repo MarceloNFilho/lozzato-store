@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 export const CATEGORY_ICON = {
-  keyboard: <Keyboard size={16} />,
+  keyboards: <Keyboard size={16} />,
   mouses: <MouseIcon size={16} />,
   headphones: <HeadphonesIcon size={16} />,
   monitors: <MonitorIcon size={16} />,
