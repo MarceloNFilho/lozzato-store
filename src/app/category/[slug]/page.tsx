@@ -30,7 +30,7 @@ const CategoryProducts = async ({ params }: any) => {
         </Badge>
       </div>
 
-      <div className="grid flex-1 grid-cols-2 gap-10">
+      <div className="grid flex-1 grid-cols-2 gap-8">
         {category.products.map((product) => {
           return (
             <ProductItem
