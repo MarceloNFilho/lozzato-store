@@ -16,6 +16,7 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
             alt={category.name}
             width={0}
             height={0}
+            quality={100}
             sizes="100vw"
             className="h-full max-h-[70%] w-auto max-w-[80%] object-contain"
           />
