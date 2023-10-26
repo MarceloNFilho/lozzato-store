@@ -4,17 +4,17 @@ const Loading = () => {
       <div className="h-96 w-full bg-accent opacity-75" />
       <div className="flex flex-col gap-8">
         <div className="grid grid-cols-4 gap-4">
-          <div className="h-20 w-20 bg-accent opacity-75" />
-          <div className="h-20 w-20 bg-accent opacity-75" />
-          <div className="h-20 w-20 bg-accent opacity-75" />
-          <div className="h-20 w-20 bg-accent opacity-75" />
+          <div className="h-20 w-20 rounded-lg bg-accent opacity-75" />
+          <div className="h-20 w-20 rounded-lg bg-accent opacity-75" />
+          <div className="h-20 w-20 rounded-lg bg-accent opacity-75" />
+          <div className="h-20 w-20 rounded-lg bg-accent opacity-75" />
         </div>
 
         <div className="flex flex-col gap-1">
-          <div className="h-6 w-32 bg-accent opacity-75" />
-          <div className="h-8 w-32 bg-accent opacity-75" />
-          <div className="h-8 w-32 bg-accent opacity-75" />
-          <div className="h-10 w-24 bg-accent opacity-75" />
+          <div className="h-6 w-32 rounded-lg bg-accent opacity-75" />
+          <div className="h-8 w-32 rounded-lg bg-accent opacity-75" />
+          <div className="h-8 w-32 rounded-lg bg-accent opacity-75" />
+          <div className="h-10 w-24 rounded-lg bg-accent opacity-75" />
         </div>
       </div>
     </div>
