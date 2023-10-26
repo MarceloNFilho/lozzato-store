@@ -19,7 +19,6 @@ const Cart = () => {
 
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
-      // TODO: redirecionar para o login
       return;
     }
 
@@ -28,8 +27,6 @@ const Cart = () => {
     const checkout = await createCheckout(products, order.id);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-
-    // Criar pedido no banco
 
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
@@ -55,8 +52,8 @@ const Cart = () => {
                 />
               ))
             ) : (
-              <p className="text-center font-semibold">
-                Carrinho vazio. Vamos fazer compras?
+              <p className="mt-8 text-center text-sm font-semibold opacity-75">
+                Carrinho vazio.
               </p>
             )}
           </div>
