@@ -10,10 +10,10 @@ const Loading = () => {
           <div className="h-20 w-20 rounded-lg bg-accent opacity-75" />
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <div className="h-6 w-32 rounded-lg bg-accent opacity-75" />
           <div className="h-8 w-32 rounded-lg bg-accent opacity-75" />
-          <div className="h-8 w-32 rounded-lg bg-accent opacity-75" />
+
           <div className="h-10 w-24 rounded-lg bg-accent opacity-75" />
         </div>
       </div>
