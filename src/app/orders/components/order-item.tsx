@@ -7,10 +7,10 @@ import {
 import { Card } from "@/components/ui/card";
 import { Order, Prisma } from "@prisma/client";
 import { format } from "date-fns";
-import OrderProductItem from "./order-product-item";
+import OrderProductItem from "./order-product-items";
 import { Separator } from "@/components/ui/separator";
 import { useMemo } from "react";
-import { computeProductTotalPrice } from "@/helpers/product";
+import { computeProductTotalPrice } from "@/helpers/products";
 import { getOrderStatus } from "../helpers/status";
 
 interface OrderItemProps {

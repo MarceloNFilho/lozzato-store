@@ -1,4 +1,4 @@
-import { computeProductTotalPrice } from "@/helpers/product";
+import { computeProductTotalPrice } from "@/helpers/products";
 import { OrderProduct, Prisma } from "@prisma/client";
 import Image from "next/image";
 
