@@ -1,10 +1,30 @@
-import { Skeleton } from "@/components/ui/skeleton";
-
 const LoadingPage = () => {
   return (
-    <div className="flex w-full flex-1 flex-col items-center p-[50%] px-20">
-      <div className="mt-12 w-[100%] animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6">
-        <Skeleton className="h-6 w-[100%] rounded-md bg-gray-300" />
+    <div className="flex w-full flex-1 flex-col items-center p-5">
+      <div className="flex animate-pulse flex-col gap-8">
+        <div className="h-8 w-28 bg-gray-800" />
+        <div className="grid grid-cols-2 gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="h-44 w-44 bg-gray-800" />
+            <div className="h-8 w-32 bg-gray-800" />
+            <div className="h-8 w-24 bg-gray-800" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="h-44 w-44 bg-gray-800" />
+            <div className="h-8 w-32 bg-gray-800" />
+            <div className="h-8 w-24 bg-gray-800" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="h-44 w-44 bg-gray-800" />
+            <div className="h-8 w-32 bg-gray-800" />
+            <div className="h-8 w-24 bg-gray-800" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="h-44 w-44 bg-gray-800" />
+            <div className="h-8 w-32 bg-gray-800" />
+            <div className="h-8 w-24 bg-gray-800" />
+          </div>
+        </div>
       </div>
     </div>
   );
