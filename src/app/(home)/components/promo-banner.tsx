@@ -1,11 +1,16 @@
 import Image, { ImageProps } from "next/image";
+import { twMerge } from "tailwind-merge";
 
-const PromoBanner = ({ alt, ...props }: ImageProps) => {
+interface PromoBannerProps {
+  className?: string;
+}
+
+const PromoBanner = ({ className, alt, ...props }: ImageProps) => {
   return (
     <Image
       width={0}
       height={0}
-      className="h-auto w-full px-5"
+      className={twMerge("h-auto w-full max-xl:px-5", className)}
       sizes="100vw"
       quality={100}
       alt={alt}

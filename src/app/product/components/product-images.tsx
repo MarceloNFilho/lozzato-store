@@ -16,39 +16,42 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex h-[380px] w-full items-center justify-center bg-accent">
-        <Image
-          src={currentImage}
-          alt={name}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-full max-h-[70%] w-auto max-w-[80%] object-contain"
-        />
-      </div>
+    <div className="flex flex-1 flex-col">
+      <div className="relative h-full">
+        <div className="flex h-[380px] w-full items-center justify-center bg-accent lg:h-full lg:rounded-lg">
+          <Image
+            src={currentImage}
+            alt={name}
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-full max-h-[70%] w-auto max-w-[80%] object-contain"
+          />
+        </div>
 
-      <div className="mt-8 grid grid-cols-4 gap-4 px-5">
-        {imageUrls.map((image) => {
-          return (
-            <button
-              key={image}
-              className={`flex h-20 items-center justify-center rounded-lg bg-accent ${
-                image === currentImage && "border-2 border-solid border-primary"
-              }`}
-              onClick={() => handleSelectedImage(image)}
-            >
-              <Image
-                src={image}
-                alt={name}
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
-              />
-            </button>
-          );
-        })}
+        <div className="grid gap-4 max-md:mt-8 max-md:grid-cols-4 max-md:px-5 lg:absolute lg:left-8 lg:top-8">
+          {imageUrls.map((image) => {
+            return (
+              <button
+                key={image}
+                className={`flex h-20 w-20 items-center justify-center rounded-lg bg-accent lg:bg-background ${
+                  image === currentImage &&
+                  "border-2 border-solid border-primary"
+                }`}
+                onClick={() => handleSelectedImage(image)}
+              >
+                <Image
+                  src={image}
+                  alt={name}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

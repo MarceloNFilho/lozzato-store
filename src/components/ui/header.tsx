@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-5 lg:min-w-[1120px] lg:max-w-[1120px] lg:p-0 lg:py-5">
+    <div className="flex max-w-[1280px] items-center justify-between p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="p-2">

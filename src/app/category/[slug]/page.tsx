@@ -19,7 +19,7 @@ const CategoryProducts = async ({ params }: any) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-8 p-5">
+    <div className="flex max-w-[1280px] flex-col items-center gap-8 max-lg:p-5 lg:mx-auto">
       <div className="flex w-full items-start">
         <Badge variant="heading">
           {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
@@ -27,7 +27,7 @@ const CategoryProducts = async ({ params }: any) => {
         </Badge>
       </div>
 
-      <div className="grid flex-1 grid-cols-2 gap-8">
+      <div className="grid w-full grid-cols-2 gap-8 lg:grid-cols-5">
         {category.products.map((product) => {
           return (
             <ProductItem
