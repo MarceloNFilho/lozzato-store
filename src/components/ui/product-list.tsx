@@ -76,7 +76,7 @@ const ProductList = ({ title, products }: ProductListProps) => {
           }
           disabled={
             currentSlide ===
-            instanceRef?.current?.track.details.slides.length - 1
+            instanceRef?.current?.track.details.slides.length! - 1
           }
         >
           <ArrowRightCircle
