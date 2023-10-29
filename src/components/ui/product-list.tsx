@@ -42,7 +42,7 @@ const ProductList = ({ title, products }: ProductListProps) => {
   });
 
   return (
-    <div className="lg:px-5">
+    <div className="lg:px-5 xl:px-0">
       <h1 className="mb-5 max-w-[1280px] font-bold uppercase max-lg:px-5 md:mx-auto">
         {title}
       </h1>
