@@ -52,17 +52,17 @@ export default async function Home() {
         <ProductList title="ofertas" products={productsWithDiscount} />
       </div>
 
-      <div className="hidden items-center justify-between md:mx-auto md:min-w-[1280px] xl:flex">
+      <div className="hidden items-center justify-between gap-6 md:mx-auto md:min-w-[1280px] xl:flex">
         <PromoBanner
-          src="/banner-home-02.png"
+          src="/banner-home-desktop-02.png"
           alt="Até 55% de desconto em mouses!"
-          className="h-[215px] max-w-[602px]"
+          className="w-[50%]"
         />
 
         <PromoBanner
-          src="/banner-home-03.png"
+          src="/banner-home-desktop-03.png"
           alt="Até 55% de desconto em mouses!"
-          className="h-[215px] max-w-[602px]"
+          className="w-[50%]"
         />
       </div>
 
