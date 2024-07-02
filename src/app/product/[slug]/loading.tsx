@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div className="flex w-full max-w-[1280px] flex-1 animate-pulse flex-col items-center gap-8 max-xl:px-5 lg:mx-auto lg:py-8">
+    <div className="min-xl:px-5 flex w-full max-w-[1280px] flex-1 animate-pulse flex-col items-center gap-8 lg:mx-auto lg:py-8">
       <div className="flex gap-8 max-lg:w-full max-md:flex-col lg:h-[732px] lg:w-full">
         <div className="h-96 w-full bg-accent opacity-75 lg:h-full lg:flex-1 lg:rounded-lg">
           <div className="hidden grid-rows-4 gap-4 p-8 lg:grid">
