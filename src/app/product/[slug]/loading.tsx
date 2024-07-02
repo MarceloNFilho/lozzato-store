@@ -38,12 +38,12 @@ const Loading = () => {
       <div className="flex w-full flex-col gap-5 max-md:hidden">
         <div className="h-6 w-60 rounded-lg bg-accent opacity-75" />
 
-        <div className="grid grid-cols-5 gap-8">
-          <div className="h-64 w-64 rounded-lg bg-accent opacity-75" />
-          <div className="h-64 w-64 rounded-lg bg-accent opacity-75" />
-          <div className="h-64 w-64 rounded-lg bg-accent opacity-75" />
-          <div className="h-64 w-64 rounded-lg bg-accent opacity-75" />
-          <div className="h-64 w-64 rounded-lg bg-accent opacity-75" />
+        <div className="grid grid-cols-5 gap-6">
+          <div className="aspect-square rounded-lg bg-accent opacity-75" />
+          <div className="aspect-square rounded-lg bg-accent opacity-75" />
+          <div className="aspect-square rounded-lg bg-accent opacity-75" />
+          <div className="aspect-square rounded-lg bg-accent opacity-75" />
+          <div className="aspect-square rounded-lg bg-accent opacity-75" />
         </div>
       </div>
     </div>
