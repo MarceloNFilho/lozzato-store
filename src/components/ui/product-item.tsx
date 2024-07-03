@@ -18,7 +18,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             height={0}
             sizes="100vw"
             alt={product.slug}
-            className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+            className="h-auto max-h-[80%] w-auto max-w-[80%] object-contain"
           />
 
           {product.discountPercentage > 0 && (
