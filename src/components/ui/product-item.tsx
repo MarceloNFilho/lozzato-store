@@ -1,3 +1,5 @@
+"use client";
+
 import { ProductWithTotalPrice } from "@/helpers/products";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +43,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             )}
           </div>
 
-          <div className="flex flex-col gap-1 px-3">
+          <div className="flex flex-col gap-1 px-2 lg:px-3">
             <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">
               {product.name}
             </p>
@@ -64,7 +66,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           </div>
         </div>
       </Link>
-      <div className="px-3 pb-3">
+      <div className="px-2 pb-3 lg:px-3">
         <Sheet>
           <SheetTrigger asChild>
             <Button
