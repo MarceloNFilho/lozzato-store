@@ -32,7 +32,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
 
   return (
-    <div className="flex flex-col px-5 lg:max-w-[472px] lg:rounded-lg lg:bg-accent lg:p-10">
+    <div className="flex flex-col px-5 lg:max-w-[472px] lg:rounded-lg lg:bg-card lg:p-10">
       <h2 className="text-lg">{product.name}</h2>
 
       <div className="flex items-center gap-2">

@@ -3,12 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";
 import { Button } from "./button";
+import { useContext } from "react";
+import { CartContext } from "@/providers/cart";
+
+import Cart from "./cart";
+import { Sheet, SheetContent, SheetTrigger } from "./sheet";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
+  const { AddProductToCart } = useContext(CartContext);
+
+  const HandleAddProductToCart = () => {
+    AddProductToCart({ ...product, quantity: 1 });
+  };
+
   return (
     <div className="space-y-3 rounded-lg bg-card">
       <Link href={`/product/${product.slug}`}>
@@ -54,9 +65,21 @@ const ProductItem = ({ product }: ProductItemProps) => {
         </div>
       </Link>
       <div className="px-3 pb-3">
-        <Button variant="outline" className="w-full hover:bg-primary">
-          Comprar
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              className="w-full hover:bg-primary"
+              onClick={HandleAddProductToCart}
+            >
+              Comprar
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent>
+            <Cart />
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );
