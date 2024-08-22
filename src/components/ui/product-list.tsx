@@ -5,8 +5,14 @@ import computeProductTotalPrice from "@/helpers/products";
 import { Product } from "@prisma/client";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
-import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
+import {
+  ArrowLeftCircle,
+  ArrowRightCircle,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useState } from "react";
+import { Button } from "./button";
 
 interface ProductListProps {
   title?: string;
@@ -50,18 +56,15 @@ const ProductList = ({ title, products }: ProductListProps) => {
         ref={sliderRef}
         className="keen-slider relative flex w-full overflow-x-auto max-lg:px-5 [&::-webkit-scrollbar]:hidden"
       >
-        <button
-          className="hidden disabled:hidden lg:block"
+        <Button
+          className="absolute bottom-[30%] left-2 z-10 hidden h-14 w-14 -translate-y-1/2 rounded-full border border-solid border-secondary bg-background disabled:hidden lg:block"
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.prev()
           }
           disabled={currentSlide === 0}
         >
-          <ArrowLeftCircle
-            className="absolute bottom-1/2 left-2 z-10 -translate-y-1/2 text-primary hover:brightness-125"
-            size={24}
-          />
-        </button>
+          <ChevronLeft className="text-white hover:brightness-125" size={24} />
+        </Button>
         {products.map((product) => {
           return (
             <div key={product.id} className="keen-slider__slide">
@@ -69,8 +72,8 @@ const ProductList = ({ title, products }: ProductListProps) => {
             </div>
           );
         })}
-        <button
-          className="hidden disabled:hidden lg:block"
+        <Button
+          className="absolute bottom-[30%] right-2 hidden h-14 w-14 -translate-y-1/2 rounded-full border border-solid border-secondary bg-background disabled:hidden lg:block"
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
           }
@@ -79,11 +82,8 @@ const ProductList = ({ title, products }: ProductListProps) => {
             instanceRef?.current?.track.details.slides.length! - 1
           }
         >
-          <ArrowRightCircle
-            className="absolute bottom-1/2 right-2 -translate-y-1/2 text-primary hover:brightness-125"
-            size={24}
-          />
-        </button>
+          <ChevronRight className="text-white hover:brightness-125" size={24} />
+        </Button>
       </div>
     </div>
   );
