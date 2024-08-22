@@ -50,7 +50,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             <div className="flex items-center gap-1">
               {product.discountPercentage > 0 ? (
                 <>
-                  <p className="text-sm font-bold">
+                  <p className="text-sm font-bold text-primary">
                     R$ {product.totalPrice.toFixed(2)}
                   </p>
                   <p className="text-xs line-through opacity-75">
