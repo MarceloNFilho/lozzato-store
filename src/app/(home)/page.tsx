@@ -61,21 +61,21 @@ export default async function Home() {
           <ProductList title="ofertas" products={productsWithDiscount} />
         </div>
 
-        <div className="hidden items-center justify-between gap-6 md:mx-auto md:min-w-[1280px] xl:flex">
+        <div className="hidden items-center justify-between gap-6 max-xl:px-5 md:mx-auto lg:flex">
           <PromoBanner
             src="/banner-home-desktop-02.png"
             alt="Até 55% de desconto em mouses!"
-            className="w-[50%]"
+            className="lg:w-[49%]"
           />
 
           <PromoBanner
             src="/banner-home-desktop-03.png"
             alt="Até 55% de desconto em mouses!"
-            className="w-[50%]"
+            className="lg:w-[49%]"
           />
         </div>
 
-        <div className="xl:hidden">
+        <div className="lg:hidden">
           <PromoBanner
             src="/banner-home-02.png"
             alt="Até 55% de desconto em mouses!"
@@ -93,7 +93,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden max-xl:px-5 lg:block">
           <PromoBanner
             src="/banner-frete-gratis-desktop.png"
             alt="Até 55% de desconto em mouses!"
