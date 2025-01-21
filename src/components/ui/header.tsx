@@ -12,23 +12,34 @@ import {
 } from "lucide-react";
 import { Button } from "./button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./sheet";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/lozzato-store-logo.svg";
 import Cart from "./cart";
+import { useRouter } from "next/navigation";
+import { SignInDialog } from "./sign-in-dialog";
+import { useState } from "react";
 
 const Header = () => {
+  const router = useRouter();
   const { status, data } = useSession();
+  const [isSignInDialogOpen, setIsSignInDialogOpen] = useState(false);
 
   const handleLoginClick = async () => {
-    await signIn();
+    setIsSignInDialogOpen(true);
   };
 
   const handleLogOutClick = async () => {
     await signOut();
+  };
+
+  const handleMyOrdersClick = () => {
+    if (data?.user) {
+      router.push("/orders");
+    }
   };
 
   return (
@@ -98,17 +109,14 @@ const Header = () => {
                 </Link>
               </SheetClose>
 
-              <SheetClose asChild>
-                <Link href="/orders">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start gap-2"
-                  >
-                    <PackageSearchIcon size={16} />
-                    Meus Pedidos
-                  </Button>
-                </Link>
-              </SheetClose>
+              <Button
+                variant="outline"
+                className="w-full justify-start gap-2"
+                onClick={handleMyOrdersClick}
+              >
+                <PackageSearchIcon size={16} />
+                Meus Pedidos
+              </Button>
 
               <SheetClose asChild>
                 <Link href="/deals">
@@ -161,6 +169,13 @@ const Header = () => {
           </SheetContent>
         </Sheet>
       </div>
+
+      {isSignInDialogOpen && (
+        <SignInDialog
+          open={isSignInDialogOpen}
+          onOpenChange={setIsSignInDialogOpen}
+        />
+      )}
     </div>
   );
 };
