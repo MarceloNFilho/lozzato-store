@@ -1,6 +1,8 @@
+"use client";
+
 import { ShoppingCartIcon } from "lucide-react";
 import { Badge } from "./badge";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/products";
@@ -11,14 +13,16 @@ import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
+import { SignInDialog } from "./sign-in-dialog";
 
 const Cart = () => {
   const { data } = useSession();
-
+  const [signInDialogOpen, setSignInDialogOpen] = useState(false);
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
+      setSignInDialogOpen(true);
       return;
     }
 
@@ -98,6 +102,11 @@ const Cart = () => {
           </Button>
         </div>
       )}
+
+      <SignInDialog
+        open={signInDialogOpen}
+        onOpenChange={setSignInDialogOpen}
+      />
     </div>
   );
 };
