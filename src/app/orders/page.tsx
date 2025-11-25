@@ -33,7 +33,7 @@ async function OrderPage() {
   });
 
   return (
-    <div className="max-w-[1280px] max-xl:p-5 lg:mx-auto">
+    <div className="max-w-[1280px] max-xl:p-5 lg:mx-auto xl:py-5">
       <Badge variant="heading">
         <PackageSearchIcon size={16} />
         Meus Pedidos

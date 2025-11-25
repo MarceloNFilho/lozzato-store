@@ -14,7 +14,7 @@ const DealsPage = async () => {
   });
 
   return (
-    <div className="flex flex-col items-center gap-8 p-5">
+    <div className="flex max-w-[1280px] flex-col items-center gap-8 max-xl:p-5 lg:mx-auto xl:py-5">
       <div className="flex w-full items-start">
         <Badge variant="heading">
           <Percent size={16} />
@@ -22,7 +22,7 @@ const DealsPage = async () => {
         </Badge>
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid w-full grid-cols-2 gap-8 lg:grid-cols-4 xl:grid-cols-5">
         {products.map((product) => {
           return (
             <ProductItem
