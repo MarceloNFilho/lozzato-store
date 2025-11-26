@@ -3,7 +3,6 @@ import ProductImages from "../components/product-images";
 import computeProductTotalPrice from "@/helpers/products";
 import ProductDetails from "../components/product-details";
 import ProductList from "@/components/ui/product-list";
-import MotionContainer from "@/components/ui/motion-container";
 
 interface ProductDetailsPageProps {
   params: {
@@ -39,16 +38,16 @@ const ProductDetailsPage = async ({
 
   return (
     <div className="mt-20 flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 lg:mx-auto lg:py-8">
-      <MotionContainer className="flex gap-8 max-xl:px-0 max-lg:flex-col">
+      <div className="flex gap-8 max-xl:px-0 max-lg:flex-col">
         <ProductImages imageUrls={product.imageUrls} name={product.name} />
         <ProductDetails product={computeProductTotalPrice(product)} />
-      </MotionContainer>
-      <MotionContainer delay={0.2}>
+      </div>
+      <div>
         <ProductList
           products={product.category.products}
           title="produtos recomendados"
         />
-      </MotionContainer>
+      </div>
     </div>
   );
 };

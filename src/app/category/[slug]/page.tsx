@@ -3,7 +3,6 @@ import ProductItem from "@/components/ui/product-item";
 import { CATEGORY_ICON } from "@/constants/category-icon";
 import computeProductTotalPrice from "@/helpers/products";
 import { prismaClient } from "@/lib/prisma";
-import MotionContainer from "@/components/ui/motion-container";
 
 const CategoryProducts = async ({ params }: any) => {
   const category = await prismaClient.category.findFirst({
@@ -21,17 +20,14 @@ const CategoryProducts = async ({ params }: any) => {
 
   return (
     <div className="mt-20 flex max-w-[1280px] flex-col items-center gap-8 max-xl:p-5 lg:mx-auto xl:py-5">
-      <MotionContainer className="flex w-full items-start" delay={0.1}>
+      <div className="flex w-full items-start">
         <Badge variant="heading">
           {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
           {category.name}
         </Badge>
-      </MotionContainer>
+      </div>
 
-      <MotionContainer
-        className="grid w-full grid-cols-2 gap-6 max-md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
-        delay={0.2}
-      >
+      <div className="grid w-full grid-cols-2 gap-6 max-md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
         {category.products.map((product) => {
           return (
             <ProductItem
@@ -40,7 +36,7 @@ const CategoryProducts = async ({ params }: any) => {
             />
           );
         })}
-      </MotionContainer>
+      </div>
     </div>
   );
 };

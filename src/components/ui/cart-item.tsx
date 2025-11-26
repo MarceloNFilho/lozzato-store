@@ -29,7 +29,7 @@ const CartItem = ({ product }: CartItemProps) => {
 
   return (
     <div className="flex items-center gap-4">
-      <div className="flex h-[84px] w-[84px] items-center justify-center rounded-lg bg-accent">
+      <div className="flex h-[84px] w-[84px] items-center justify-center rounded-3xl bg-accent">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
@@ -53,7 +53,7 @@ const CartItem = ({ product }: CartItemProps) => {
             </p>
           )}
         </div>
-        <div className="mt-4 flex  items-center justify-between">
+        <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Button
               size="icon"

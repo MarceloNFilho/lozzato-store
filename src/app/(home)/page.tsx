@@ -33,7 +33,7 @@ export default async function Home() {
   return (
     <div className="lg:space-y-6">
       <MotionContainer>
-        <div className="relative hidden overflow-hidden rounded-lg lg:block">
+        <div className="relative hidden overflow-hidden lg:block">
           <PromoVideo src="/ps5-desktop-video.mp4" variant="desktop" />
 
           <div className="absolute left-1/2 top-1/2 h-full w-full max-w-[1280px] -translate-x-1/2 -translate-y-1/2 transform">

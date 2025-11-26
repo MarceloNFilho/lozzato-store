@@ -4,7 +4,6 @@ import { prismaClient } from "@/lib/prisma";
 import { PackageSearchIcon } from "lucide-react";
 import { getServerSession } from "next-auth";
 import OrderItem from "./components/order-item";
-import MotionContainer from "@/components/ui/motion-container";
 
 export const dynamic = "force-dynamic";
 
@@ -35,18 +34,16 @@ async function OrderPage() {
 
   return (
     <div className="mt-20 max-w-[1280px] max-xl:p-5 lg:mx-auto xl:py-5">
-      <MotionContainer delay={0.1}>
-        <Badge variant="heading">
-          <PackageSearchIcon size={16} />
-          Meus Pedidos
-        </Badge>
-      </MotionContainer>
+      <Badge variant="heading">
+        <PackageSearchIcon size={16} />
+        Meus Pedidos
+      </Badge>
 
-      <MotionContainer className="mt-5 flex flex-col gap-5" delay={0.2}>
+      <div className="mt-5 flex flex-col gap-5">
         {orders.map((order) => (
           <OrderItem key={order.id} order={order} />
         ))}
-      </MotionContainer>
+      </div>
     </div>
   );
 }

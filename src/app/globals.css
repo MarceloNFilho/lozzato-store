@@ -69,4 +69,8 @@
   body {
     @apply h-full bg-background text-foreground;
   }
+
+  body:has(#loading-overlay) .main-header {
+    display: none;
+  }
 }

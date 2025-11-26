@@ -53,7 +53,7 @@ const Header = () => {
   const iconColor = pathname === "/" ? "text-black" : "text-white";
 
   return (
-    <div className="absolute top-0 z-50 w-full items-center justify-between rounded-b-lg p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
+    <div className="main-header absolute top-0 z-50 w-full items-center justify-between rounded-b-lg p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
       <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between">
         <Link href={"/"}>
           <p

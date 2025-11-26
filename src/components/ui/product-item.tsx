@@ -23,10 +23,10 @@ const ProductItem = ({ product }: ProductItemProps) => {
   };
 
   return (
-    <div className="space-y-3 rounded-lg bg-card">
+    <div className="space-y-3 rounded-3xl bg-card">
       <Link href={`/product/${product.slug}`}>
         <div className="flex flex-col gap-3">
-          <div className="relative flex aspect-square items-center justify-center whitespace-nowrap rounded-lg">
+          <div className="relative flex aspect-square items-center justify-center whitespace-nowrap rounded-3xl">
             <Image
               src={product.imageUrls[0]}
               width={0}
