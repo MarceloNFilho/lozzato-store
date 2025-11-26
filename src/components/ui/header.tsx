@@ -67,7 +67,7 @@ const Header = () => {
             height={0}
             sizes="100vw"
             quality={100}
-            className="h-auto max-h-10 w-fit object-contain max-sm:max-h-9"
+            className="h-auto max-h-10 w-full object-contain max-sm:max-h-9"
           />
         </Link>
         <div className="flex items-center gap-4">
