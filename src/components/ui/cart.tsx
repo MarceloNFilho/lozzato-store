@@ -39,10 +39,10 @@ const Cart = () => {
 
   return (
     <div className="flex h-full flex-col gap-8">
-      <Badge variant="heading">
-        <ShoppingCartIcon size={16} />
+      <div className="flex items-center gap-2">
+        <ShoppingCartIcon size={20} />
         Carrinho
-      </Badge>
+      </div>
 
       {/* RENDERIZAR OS PRODUTOS */}
       <div className="flex h-full max-h-full flex-col gap-5 overflow-hidden">

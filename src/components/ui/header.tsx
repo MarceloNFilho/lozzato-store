@@ -57,7 +57,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-between rounded-b-lg bg-card p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
+    <div className="absolute top-0 z-50 w-full items-center justify-between rounded-b-lg p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
       <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between">
         <Link href={"/"}>
           <Image
@@ -71,6 +71,17 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center gap-4">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="ghost" className="p-2 text-primary">
+                <ShoppingCart size={20} />
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent>
+              <Cart />
+            </SheetContent>
+          </Sheet>
           {status === "loading" && <Skeleton className="h-10 w-10 bg-accent" />}
           {data?.user ? (
             <DropdownMenu>
@@ -155,8 +166,8 @@ const Header = () => {
                 <DropdownMenuTrigger>
                   <Button
                     onClick={handleLoginClick}
-                    variant="outline"
-                    className="p-2"
+                    variant="ghost"
+                    className="p-2 text-primary"
                   >
                     <User size={20} />
                   </Button>
@@ -203,17 +214,6 @@ const Header = () => {
               </DropdownMenu>
             )
           )}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button size="icon" variant="outline" className="p-2">
-                <ShoppingCart size={20} />
-              </Button>
-            </SheetTrigger>
-
-            <SheetContent>
-              <Cart />
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
 

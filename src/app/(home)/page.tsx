@@ -2,6 +2,7 @@ import Categories from "./components/categories";
 import ProductList from "../../components/ui/product-list";
 import { prismaClient } from "@/lib/prisma";
 import PromoBanner from "./components/promo-banner";
+import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   const productsWithDiscount = await prismaClient.product.findMany({
@@ -45,12 +46,34 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <div className="flex max-w-[1280px] flex-col gap-8 max-lg:py-8 md:gap-10 lg:mx-auto lg:pb-8">
-        <div className="block lg:hidden">
-          <PromoBanner
-            src="/banner-home-01.png"
-            alt="Até 55% de desconto esse mês!"
+      <div className="flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 md:gap-10 lg:mx-auto lg:pb-8">
+        <PromoBanner
+          src="/banner-home-desktop-01.png"
+          alt="Até 55% de desconto esse mês!"
+          className="h-[463px] object-cover opacity-20 max-md:hidden lg:hidden"
+        />
+        <div className="relative text-center">
+          <video
+            src="/ps5.mp4"
+            preload="auto"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="relative h-screen w-full object-cover md:hidden"
           />
+          <div className="absolute bottom-16 z-50 flex flex-col items-center gap-4 px-5 uppercase md:hidden">
+            <h1 className="line-clamp-2 text-xl font-semibold tracking-normal sm:max-w-md">
+              PlayStation 5 Slim 2024 1TB
+            </h1>
+            <div className="tagline line-clamp-2 text-base tracking-normal sm:max-w-md">
+              Inclui um Controle Branco Sony e os jogos Returnal e Ratchet &amp;
+              Clank
+            </div>
+            <Button variant="default" className="w-60 text-base uppercase">
+              Ver produto
+            </Button>
+          </div>
         </div>
 
         <div className="max-xl:px-5 lg:hidden">
@@ -75,7 +98,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="lg:hidden">
+        <div className="px-5 lg:hidden">
           <PromoBanner
             src="/banner-home-02.png"
             alt="Até 55% de desconto em mouses!"
@@ -86,7 +109,7 @@ export default async function Home() {
           <ProductList title="teclados" products={keyboards} />
         </div>
 
-        <div className="lg:hidden">
+        <div className="px-5 lg:hidden">
           <PromoBanner
             src="/banner-home-03.png"
             alt="Até 55% de desconto em mouses!"
