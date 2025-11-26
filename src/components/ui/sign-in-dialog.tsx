@@ -34,7 +34,13 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
           className="mt-1 flex items-center gap-2"
           onClick={handleSignInWithGoogleClick}
         >
-          <Image src="/google.svg" alt="google" width={16} height={16} />
+          <Image
+            src="/google.svg"
+            alt="google"
+            width={16}
+            height={16}
+            className="brightness-0"
+          />
           <p className="text-sm font-bold">Google</p>
         </Button>
       </DialogContent>
