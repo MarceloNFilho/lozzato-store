@@ -3,6 +3,7 @@ import ProductList from "../../components/ui/product-list";
 import { prismaClient } from "@/lib/prisma";
 import PromoBanner from "./components/promo-banner";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function Home() {
   const productsWithDiscount = await prismaClient.product.findMany({
@@ -70,9 +71,11 @@ export default async function Home() {
               Inclui um Controle Branco Sony e os jogos Returnal e Ratchet &amp;
               Clank
             </div>
-            <Button variant="default" className="w-60 text-base uppercase">
-              Ver produto
-            </Button>
+            <Link href="/product/playStation-5-slim" className="w-60">
+              <Button variant="default" className="w-full text-base uppercase">
+                Ver produto
+              </Button>
+            </Link>
           </div>
         </div>
 
