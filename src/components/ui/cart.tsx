@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCartIcon } from "lucide-react";
+import { ShoppingCartIcon, Loader2 } from "lucide-react";
 import { Badge } from "./badge";
 import { useContext, useState } from "react";
 import { CartContext } from "@/providers/cart";
@@ -10,7 +10,7 @@ import { Separator } from "./separator";
 import { ScrollArea } from "./scroll-area";
 import { Button } from "./button";
 import { createCheckout } from "@/actions/checkout";
-import { loadStripe } from "@stripe/stripe-js";
+
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
 import { SignInDialog } from "./sign-in-dialog";
@@ -18,6 +18,7 @@ import { SignInDialog } from "./sign-in-dialog";
 const Cart = () => {
   const { data } = useSession();
   const [signInDialogOpen, setSignInDialogOpen] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
@@ -26,15 +27,20 @@ const Cart = () => {
       return;
     }
 
-    const order = await createOrder(products, (data?.user as any).id);
+    try {
+      setProcessing(true);
 
-    const checkout = await createCheckout(products, order.id);
+      const order = await createOrder(products, (data?.user as any).id);
 
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+      const checkout = await createCheckout(products, order.id);
 
-    stripe?.redirectToCheckout({
-      sessionId: checkout.id,
-    });
+      if (checkout.url) {
+        window.location.href = checkout.url;
+      }
+    } catch (error) {
+      console.error(error);
+      setProcessing(false);
+    }
   };
 
   return (
@@ -97,7 +103,9 @@ const Cart = () => {
           <Button
             className="mt-7 font-bold uppercase"
             onClick={handleFinishPurchaseClick}
+            disabled={processing}
           >
+            {processing && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Finalizar compra
           </Button>
         </div>
