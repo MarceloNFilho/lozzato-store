@@ -73,7 +73,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" variant="ghost" className="p-2 text-primary">
+              <Button size="icon" variant="link" className="p-2 text-primary">
                 <ShoppingCart size={20} />
               </Button>
             </SheetTrigger>
@@ -166,7 +166,7 @@ const Header = () => {
                 <DropdownMenuTrigger>
                   <Button
                     onClick={handleLoginClick}
-                    variant="ghost"
+                    variant="link"
                     className="p-2 text-primary"
                   >
                     <User size={20} />

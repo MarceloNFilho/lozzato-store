@@ -2,8 +2,7 @@ import Categories from "./components/categories";
 import ProductList from "../../components/ui/product-list";
 import { prismaClient } from "@/lib/prisma";
 import PromoBanner from "./components/promo-banner";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import PromoVideo from "./components/promo-video";
 
 export default async function Home() {
   const productsWithDiscount = await prismaClient.product.findMany({
@@ -32,12 +31,8 @@ export default async function Home() {
 
   return (
     <div className="lg:space-y-6">
-      <div className="relative hidden rounded-lg lg:block">
-        <PromoBanner
-          src="/banner-home-desktop-01.png"
-          alt="Até 55% de desconto esse mês!"
-          className="h-[463px] object-cover opacity-20"
-        />
+      <div className="relative hidden overflow-hidden rounded-lg lg:block">
+        <PromoVideo src="/ps5-desktop-video.mp4" variant="desktop" />
 
         <div className="absolute left-1/2 top-1/2 h-full w-full max-w-[1280px] -translate-x-1/2 -translate-y-1/2 transform">
           <div className="flex h-full flex-col justify-end pb-6 max-xl:px-5">
@@ -48,35 +43,8 @@ export default async function Home() {
         </div>
       </div>
       <div className="flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 md:gap-10 lg:mx-auto lg:pb-8">
-        <PromoBanner
-          src="/banner-home-desktop-01.png"
-          alt="Até 55% de desconto esse mês!"
-          className="h-[463px] object-cover opacity-20 max-md:hidden lg:hidden"
-        />
-        <div className="relative text-center">
-          <video
-            src="/ps5.mp4"
-            preload="auto"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="relative h-screen w-full object-cover md:hidden"
-          />
-          <div className="absolute bottom-16 z-50 flex flex-col items-center gap-4 px-5 uppercase md:hidden">
-            <h1 className="line-clamp-2 text-xl font-semibold tracking-normal sm:max-w-md">
-              PlayStation 5 Slim 2024 1TB
-            </h1>
-            <div className="tagline line-clamp-2 text-base tracking-normal sm:max-w-md">
-              Inclui um Controle Branco Sony e os jogos Returnal e Ratchet &amp;
-              Clank
-            </div>
-            <Link href="/product/playStation-5-slim" className="w-60">
-              <Button variant="default" className="w-full text-base uppercase">
-                Ver produto
-              </Button>
-            </Link>
-          </div>
+        <div className="lg:hidden">
+          <PromoVideo src="/ps5.mp4" variant="mobile" />
         </div>
 
         <div className="max-xl:px-5 lg:hidden">
