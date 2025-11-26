@@ -23,7 +23,7 @@ const PromoVideo = ({ src, variant = "mobile" }: PromoVideoProps) => {
         className={twMerge(
           "absolute z-50 flex w-full flex-col gap-4 px-5 uppercase",
           variant === "mobile"
-            ? "bottom-16 items-center"
+            ? "bottom-16 items-center text-center"
             : "bottom-[45%] left-0 right-0 mx-auto max-w-[1280px] items-start xl:px-0",
         )}
       >
