@@ -36,9 +36,7 @@ export default async function Home() {
 
         <div className="absolute left-1/2 top-1/2 h-full w-full max-w-[1280px] -translate-x-1/2 -translate-y-1/2 transform">
           <div className="flex h-full flex-col justify-end pb-6 max-xl:px-5">
-            <div>
-              <Categories />
-            </div>
+            <Categories />
           </div>
         </div>
       </div>

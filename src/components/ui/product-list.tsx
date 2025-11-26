@@ -57,13 +57,14 @@ const ProductList = ({ title, products }: ProductListProps) => {
         className="keen-slider relative flex w-full overflow-x-auto max-lg:px-5 [&::-webkit-scrollbar]:hidden"
       >
         <Button
-          className="absolute bottom-[30%] left-2 z-10 hidden h-14 w-14 -translate-y-1/2 rounded-full border border-solid border-secondary bg-background disabled:hidden lg:block"
+          variant="link"
+          className="absolute bottom-[30%] left-2 z-10 hidden h-14 w-14 -translate-y-1/2 rounded-full disabled:hidden lg:block"
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.prev()
           }
           disabled={currentSlide === 0}
         >
-          <ChevronLeft className="text-white hover:brightness-125" size={24} />
+          <ChevronLeft size={24} />
         </Button>
         {products.map((product) => {
           return (
@@ -73,7 +74,8 @@ const ProductList = ({ title, products }: ProductListProps) => {
           );
         })}
         <Button
-          className="absolute bottom-[30%] right-2 hidden h-14 w-14 -translate-y-1/2 rounded-full border border-solid border-secondary bg-background disabled:hidden lg:block"
+          variant="link"
+          className="absolute bottom-[30%] right-2 hidden h-14 w-14 -translate-y-1/2 rounded-full disabled:hidden lg:block"
           onClick={(e: any) =>
             e.stopPropagation() || instanceRef.current?.next()
           }
@@ -82,7 +84,7 @@ const ProductList = ({ title, products }: ProductListProps) => {
             instanceRef?.current?.track.details.slides.length! - 1
           }
         >
-          <ChevronRight className="text-white hover:brightness-125" size={24} />
+          <ChevronRight size={24} />
         </Button>
       </div>
     </div>

@@ -31,7 +31,6 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
           </DialogDescription>
         </DialogHeader>
         <Button
-          variant="outline"
           className="mt-1 flex items-center gap-2"
           onClick={handleSignInWithGoogleClick}
         >

@@ -71,7 +71,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           <SheetTrigger asChild>
             <Button
               variant="outline"
-              className="w-full uppercase hover:bg-primary"
+              className="w-full uppercase"
               onClick={HandleAddProductToCart}
             >
               Comprar

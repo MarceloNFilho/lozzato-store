@@ -1,20 +1,13 @@
 "use client";
 
 import {
-  ChevronDown,
-  HomeIcon,
+  Gamepad2,
   ListOrderedIcon,
-  LogIn,
-  LogInIcon,
   LogOutIcon,
-  MenuIcon,
   PackageSearchIcon,
   PercentIcon,
   ShoppingCart,
-  ShoppingCartIcon,
   User,
-  User2,
-  UserIcon,
 } from "lucide-react";
 import { Button } from "./button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./sheet";
@@ -22,10 +15,10 @@ import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
-import Image from "next/image";
-import logo from "../../../public/lozzato-store-logo.svg";
+
+import logo from "../../../public/lozzato-store-logo.png";
 import Cart from "./cart";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { SignInDialog } from "./sign-in-dialog";
 import { useState } from "react";
 import {
@@ -39,6 +32,7 @@ import { Skeleton } from "./skeleton";
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { status, data } = useSession();
   const [isSignInDialogOpen, setIsSignInDialogOpen] = useState(false);
 
@@ -56,24 +50,25 @@ const Header = () => {
     }
   };
 
+  const iconColor = pathname === "/" ? "text-black" : "text-white";
+
   return (
     <div className="absolute top-0 z-50 w-full items-center justify-between rounded-b-lg p-5 xl:mx-auto xl:min-w-[1280px] xl:p-0 xl:py-5">
       <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between">
         <Link href={"/"}>
-          <Image
-            src={logo}
-            alt=""
-            width={0}
-            height={0}
-            sizes="100vw"
-            quality={100}
-            className="h-auto max-h-10 w-full object-contain max-sm:max-h-9"
-          />
+          <p
+            className={`font-sans text-xl font-medium uppercase tracking-[0.4rem] ${iconColor}`}
+          >
+            LOZZATO
+            <span className="text-[10px] font-normal tracking-widest">
+              STORE
+            </span>
+          </p>
         </Link>
         <div className="flex items-center gap-4">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" variant="link" className="p-2 text-primary">
+              <Button size="icon" variant="link" className={`p-2 ${iconColor}`}>
                 <ShoppingCart size={20} />
               </Button>
             </SheetTrigger>
@@ -167,7 +162,7 @@ const Header = () => {
                   <Button
                     onClick={handleLoginClick}
                     variant="link"
-                    className="p-2 text-primary"
+                    className={`p-2 ${iconColor}`}
                   >
                     <User size={20} />
                   </Button>
