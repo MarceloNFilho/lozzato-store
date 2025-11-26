@@ -77,7 +77,6 @@ const Header = () => {
               <Cart />
             </SheetContent>
           </Sheet>
-          {status === "loading" && <Skeleton className="h-10 w-10 bg-accent" />}
           {data?.user ? (
             <DropdownMenu>
               <Tooltip>
