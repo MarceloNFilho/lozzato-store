@@ -22,7 +22,7 @@ interface ProductListProps {
 const ProductList = ({ title, products }: ProductListProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    slides: { perView: 2.3, spacing: 16 },
+    slides: { perView: 1.8, spacing: 16 },
     breakpoints: {
       "(min-width: 640px)": {
         slides: { perView: 3.5, spacing: 16 },

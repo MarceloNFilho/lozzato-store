@@ -23,10 +23,15 @@ const ProductItem = ({ product }: ProductItemProps) => {
   };
 
   return (
-    <div className="space-y-3 rounded-3xl bg-card">
+    <div 
+      className="space-y-3 bg-card"
+      style={{
+        clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+      }}
+    >
       <Link href={`/product/${product.slug}`}>
         <div className="flex flex-col gap-3">
-          <div className="relative flex aspect-square items-center justify-center whitespace-nowrap rounded-3xl">
+          <div className="relative flex aspect-square items-center justify-center whitespace-nowrap">
             <Image
               src={product.imageUrls[0]}
               width={0}

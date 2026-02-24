@@ -31,77 +31,84 @@ export default async function Home() {
   });
 
   return (
-    <div className="lg:space-y-6">
-      <MotionContainer>
-        <div className="relative hidden overflow-hidden lg:block">
-          <PromoVideo src="/ps5-desktop-video.mp4" variant="desktop" />
-
-          <div className="absolute left-1/2 top-1/2 h-full w-full max-w-[1280px] -translate-x-1/2 -translate-y-1/2 transform">
-            <div className="flex h-full flex-col justify-end pb-6 max-xl:px-5">
-              <Categories />
+    <div className="bg-background">
+      {/* 105vh wrapper allows for 5vh of scrolling while the video remains sticky at the top */}
+      <div className="relative h-[105vh] w-full">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <div className="relative hidden h-full w-full lg:block">
+            <MotionContainer className="h-full w-full">
+              <PromoVideo src="/ps5-desktop-video.mp4" variant="desktop" />
+            </MotionContainer>
+            <div className="absolute bottom-[8vh] left-1/2 z-20 w-full max-w-[1280px] -translate-x-1/2 px-5 xl:px-0">
+              <MotionContainer delay={0.2}>
+                <Categories />
+              </MotionContainer>
             </div>
           </div>
+          <MotionContainer className="block h-full w-full lg:hidden">
+            <PromoVideo src="/ps5.mp4" variant="mobile" />
+          </MotionContainer>
         </div>
-      </MotionContainer>
-      <div className="flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 md:gap-10 lg:mx-auto lg:pb-8">
-        <MotionContainer className="lg:hidden">
-          <PromoVideo src="/ps5.mp4" variant="mobile" />
-        </MotionContainer>
+      </div>
 
-        <MotionContainer className="max-xl:px-5 lg:hidden" delay={0.1}>
-          <Categories />
-        </MotionContainer>
+      {/* The content wrapper with negative margin pulls it up by 5vh to overlap the video exactly as the sticky effect releases */}
+      <div className="relative z-20 -mt-[5vh] flex w-full flex-col items-center bg-background pt-8 pb-8 lg:pb-8 lg:pt-12">
+        <div className="flex w-full max-w-[1280px] flex-col gap-8 md:gap-10 lg:space-y-6">
+          <MotionContainer className="px-5 lg:hidden" delay={0.1}>
+            <Categories />
+          </MotionContainer>
 
-        <MotionContainer delay={0.2}>
-          <ProductList title="ofertas" products={productsWithDiscount} />
-        </MotionContainer>
+          <MotionContainer delay={0.2}>
+            <ProductList title="ofertas" products={productsWithDiscount} />
+          </MotionContainer>
 
-        <div className="hidden items-center justify-between gap-6 max-xl:px-5 md:mx-auto lg:flex">
-          <MotionContainer className="lg:w-[49%]" delay={0.4}>
+          <div className="hidden items-center justify-between gap-6 px-5 lg:mx-0 md:mx-auto lg:flex xl:px-0">
+            <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
+              <PromoBanner
+                src="/banner-home-desktop-02.png"
+                alt="Até 55% de desconto em mouses!"
+                className="w-full"
+              />
+            </MotionContainer>
+
+            <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
+              <PromoBanner
+                src="/banner-home-desktop-03.png"
+                alt="Até 55% de desconto em mouses!"
+                className="w-full"
+              />
+            </MotionContainer>
+          </div>
+
+          <MotionContainer className="px-5 lg:hidden" delay={0.3}>
             <PromoBanner
-              src="/banner-home-desktop-02.png"
+              src="/banner-home-02.png"
               alt="Até 55% de desconto em mouses!"
-              className="w-full"
             />
           </MotionContainer>
 
-          <MotionContainer className="lg:w-[49%]" delay={0.4}>
+          <MotionContainer delay={0.4}>
+            <ProductList title="teclados" products={keyboards} />
+          </MotionContainer>
+
+          <MotionContainer className="px-5 lg:hidden" delay={0.5}>
             <PromoBanner
-              src="/banner-home-desktop-03.png"
+              src="/banner-home-03.png"
               alt="Até 55% de desconto em mouses!"
-              className="w-full"
             />
           </MotionContainer>
+
+          <MotionContainer className="hidden px-5 lg:block xl:px-0" delay={0.5}>
+            <PromoBanner
+              src="/banner-frete-gratis-desktop.png"
+              alt="Até 55% de desconto em frete!"
+            />
+          </MotionContainer>
+
+          <MotionContainer delay={0.6}>
+            <ProductList title="mouses" products={mouses} />
+          </MotionContainer>
         </div>
-
-        <MotionContainer className="px-5 lg:hidden" delay={0.3}>
-          <PromoBanner
-            src="/banner-home-02.png"
-            alt="Até 55% de desconto em mouses!"
-          />
-        </MotionContainer>
-
-        <MotionContainer delay={0.4}>
-          <ProductList title="teclados" products={keyboards} />
-        </MotionContainer>
-
-        <MotionContainer className="px-5 lg:hidden" delay={0.5}>
-          <PromoBanner
-            src="/banner-home-03.png"
-            alt="Até 55% de desconto em mouses!"
-          />
-        </MotionContainer>
-
-        <MotionContainer className="hidden max-xl:px-5 lg:block" delay={0.5}>
-          <PromoBanner
-            src="/banner-frete-gratis-desktop.png"
-            alt="Até 55% de desconto em mouses!"
-          />
-        </MotionContainer>
-
-        <MotionContainer delay={0.6}>
-          <ProductList title="mouses" products={mouses} />
-        </MotionContainer>
       </div>
     </div>
   );
