@@ -10,7 +10,7 @@ interface PromoVideoProps {
 
 const PromoVideo = ({ src, variant = "mobile" }: PromoVideoProps) => {
   return (
-    <div className="grid h-[100dvh] w-full place-items-stretch overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       <video
         src={src}
         preload="auto"
@@ -18,14 +18,14 @@ const PromoVideo = ({ src, variant = "mobile" }: PromoVideoProps) => {
         loop
         muted
         playsInline
-        className="col-start-1 row-start-1 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div
         className={twMerge(
-          "col-start-1 row-start-1 z-10 flex w-full",
+          "absolute inset-0 z-10 flex w-full",
           variant === "mobile"
-            ? "flex-col gap-4 px-5 items-center justify-end self-end pb-24 pt-6 text-center uppercase"
-            : "items-center self-stretch",
+            ? "flex-col gap-4 px-5 items-center justify-end pb-12 text-center uppercase"
+            : "items-center",
         )}
       >
         <div 

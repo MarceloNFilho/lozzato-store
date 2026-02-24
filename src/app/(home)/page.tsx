@@ -32,9 +32,8 @@ export default async function Home() {
 
   return (
     <div className="bg-background">
-      {/* 105dvh wrapper allows for 5dvh of scrolling while the video remains sticky at the top */}
-      <div className="relative h-[105dvh] w-full">
-        <div className="sticky top-0 h-[100dvh] w-full overflow-hidden">
+      <div className="relative h-[100svh] lg:h-[105svh] w-full">
+        <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
           <div className="relative hidden h-full w-full lg:block">
             <MotionContainer className="h-full w-full">
               <PromoVideo src="/ps5-desktop-video.mp4" variant="desktop" />
@@ -51,8 +50,7 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* The content wrapper with negative margin pulls it up by 5dvh to overlap the video exactly as the sticky effect releases */}
-      <div className="relative z-20 -mt-[5dvh] flex w-full flex-col items-center bg-background pt-8 pb-8 lg:pb-8 lg:pt-12">
+      <div className="relative z-20 flex w-full flex-col items-center bg-background pt-8 pb-8 lg:pb-8 lg:pt-12 lg:-mt-[5svh]">
         <div className="flex w-full max-w-[1280px] flex-col gap-8 md:gap-10 lg:space-y-6">
           <MotionContainer className="px-5 lg:hidden" delay={0.1}>
             <Categories />
