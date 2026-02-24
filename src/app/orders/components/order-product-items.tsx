@@ -15,7 +15,12 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
 
   return (
     <div className="flex items-center gap-4">
-      <div className="flex h-[77px] w-[100px] items-center justify-center rounded-3xl bg-accent">
+      <div 
+        className="flex h-[77px] w-[100px] items-center justify-center bg-accent"
+        style={{
+          clipPath: "polygon(0.5rem 0px, 100% 0px, 100% calc(100% - 0.5rem), calc(100% - 0.5rem) 100%, 0px 100%, 0px 0.5rem)",
+        }}
+      >
         <Image
           src={orderProduct.product.imageUrls[0]}
           width={0}
@@ -27,7 +32,12 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
       </div>
 
       <div className="flex w-full flex-col gap-1">
-        <div className="flex w-fit rounded-md bg-accent px-3 py-1">
+        <div 
+          className="flex w-fit bg-accent px-3 py-1"
+          style={{
+            clipPath: "polygon(0.25rem 0px, 100% 0px, 100% calc(100% - 0.25rem), calc(100% - 0.25rem) 100%, 0px 100%, 0px 0.25rem)",
+          }}
+        >
           <p className="text-[10px]">
             Vendido e entregue por{" "}
             <span className="font-bold">Lozzato Store</span>

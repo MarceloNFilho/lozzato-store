@@ -29,7 +29,12 @@ const CartItem = ({ product }: CartItemProps) => {
 
   return (
     <div className="flex items-center gap-4">
-      <div className="flex h-[84px] w-[84px] items-center justify-center rounded-3xl bg-accent">
+      <div 
+        className="flex h-[84px] w-[84px] items-center justify-center bg-accent"
+        style={{
+          clipPath: "polygon(0.5rem 0px, 100% 0px, 100% calc(100% - 0.5rem), calc(100% - 0.5rem) 100%, 0px 100%, 0px 0.5rem)",
+        }}
+      >
         <Image
           src={product.imageUrls[0]}
           alt={product.name}

@@ -32,7 +32,12 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   };
 
   return (
-    <div className="flex flex-col px-5 lg:max-w-[472px] lg:rounded-3xl lg:bg-card lg:p-10">
+    <div 
+      className="flex flex-col px-5 lg:max-w-[472px] lg:bg-card lg:p-10"
+      style={{
+        clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+      }}
+    >
       <h2 className="text-lg">{product.name}</h2>
 
       <div className="flex items-center gap-2">
@@ -82,7 +87,12 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         </SheetContent>
       </Sheet>
 
-      <div className="mt-5 flex items-center justify-between rounded-3xl bg-white bg-opacity-5 px-5 py-2">
+      <div 
+        className="mt-5 flex items-center justify-between bg-white bg-opacity-5 px-5 py-2"
+        style={{
+          clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+        }}
+      >
         <div className="flex items-center gap-3">
           <TruckIcon />
           <div className="flex flex-col">

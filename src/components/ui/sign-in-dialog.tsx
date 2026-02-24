@@ -23,7 +23,12 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[85%] max-w-[324px] rounded-xl">
+      <DialogContent 
+        className="w-[85%] max-w-[324px]"
+        style={{
+          clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+        }}
+      >
         <DialogHeader className="flex gap-0.5">
           <DialogTitle>Faça login na plataforma</DialogTitle>
           <DialogDescription>

@@ -9,8 +9,13 @@ interface CategoryItemProps {
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
     <Link href={`/category/${category.slug}`}>
-      <div className="flex flex-col gap-2 rounded-3xl bg-card py-3">
-        <div className="flex aspect-square w-full items-center justify-center rounded-3xl bg-card">
+      <div 
+        className="flex flex-col gap-2 bg-card py-3"
+        style={{
+          clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+        }}
+      >
+        <div className="flex aspect-square w-full items-center justify-center bg-card">
           <Image
             src={category.imageUrl}
             alt={category.name}
@@ -22,7 +27,7 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
           />
         </div>
 
-        <div className="rounded-bl-3xl rounded-br-3xl bg-card py-3">
+        <div className="bg-card py-3">
           <p className="text-center text-sm font-semibold">{category.name}</p>
         </div>
       </div>

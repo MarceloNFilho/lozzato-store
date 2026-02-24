@@ -18,7 +18,12 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
   return (
     <div className="flex flex-1 flex-col">
       <div className="relative h-full">
-        <div className="flex h-[380px] flex-1 items-center justify-center bg-card lg:h-full lg:rounded-3xl">
+        <div 
+          className="flex h-[380px] flex-1 items-center justify-center bg-card lg:h-full"
+          style={{
+            clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+          }}
+        >
           <Image
             src={currentImage}
             alt={name}
@@ -34,10 +39,13 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
             return (
               <button
                 key={image}
-                className={`flex h-20 w-20 items-center justify-center rounded-3xl bg-accent lg:bg-background ${
+                className={`flex h-20 w-20 items-center justify-center bg-accent lg:bg-background ${
                   image === currentImage &&
                   "border-2 border-solid border-primary"
                 }`}
+                style={{
+                  clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
+                }}
                 onClick={() => handleSelectedImage(image)}
               >
                 <Image
