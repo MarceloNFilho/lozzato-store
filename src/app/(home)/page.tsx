@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <div className="bg-background">
-      <div className="relative h-[100svh] lg:h-[105svh] w-full">
+      <div className="relative h-[100svh] w-full lg:h-[105svh]">
         <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
           <div className="relative hidden h-full w-full lg:block">
             <MotionContainer className="h-full w-full">
@@ -50,7 +50,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="relative z-20 flex w-full flex-col items-center bg-background pt-8 pb-8 lg:pb-8 lg:pt-12 lg:-mt-[5svh]">
+      <div className="relative z-20 flex w-full flex-col items-center bg-background pb-8 pt-8 lg:-mt-[5svh] lg:pb-8 lg:pt-12">
         <div className="flex w-full max-w-[1280px] flex-col gap-8 md:gap-10 lg:space-y-6">
           <MotionContainer className="px-5 lg:hidden" delay={0.1}>
             <Categories />
@@ -60,10 +60,10 @@ export default async function Home() {
             <ProductList title="ofertas" products={productsWithDiscount} />
           </MotionContainer>
 
-          <div className="hidden items-center justify-between gap-6 px-5 lg:mx-0 md:mx-auto lg:flex xl:px-0">
+          <div className="hidden items-center justify-between gap-6 px-5 md:mx-auto lg:mx-0 lg:flex xl:px-0">
             <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
               <PromoBanner
-                src="/banner-home-desktop-02.png"
+                src="/banner-home-desktop-02.jpg"
                 alt="Até 55% de desconto em mouses!"
                 className="w-full"
               />
@@ -71,7 +71,7 @@ export default async function Home() {
 
             <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
               <PromoBanner
-                src="/banner-home-desktop-03.png"
+                src="/banner-home-desktop-03.jpg"
                 alt="Até 55% de desconto em mouses!"
                 className="w-full"
               />
@@ -80,7 +80,7 @@ export default async function Home() {
 
           <MotionContainer className="px-5 lg:hidden" delay={0.3}>
             <PromoBanner
-              src="/banner-home-02.png"
+              src="/banner-home-02.jpg"
               alt="Até 55% de desconto em mouses!"
             />
           </MotionContainer>
@@ -91,14 +91,14 @@ export default async function Home() {
 
           <MotionContainer className="px-5 lg:hidden" delay={0.5}>
             <PromoBanner
-              src="/banner-home-03.png"
+              src="/banner-home-01.jpg"
               alt="Até 55% de desconto em mouses!"
             />
           </MotionContainer>
 
           <MotionContainer className="hidden px-5 lg:block xl:px-0" delay={0.5}>
             <PromoBanner
-              src="/banner-frete-gratis-desktop.png"
+              src="/banner-frete-gratis-desktop.jpg"
               alt="Até 55% de desconto em frete!"
             />
           </MotionContainer>
