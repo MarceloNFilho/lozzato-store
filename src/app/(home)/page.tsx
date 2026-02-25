@@ -63,7 +63,7 @@ export default async function Home() {
           <div className="hidden items-center justify-between gap-6 px-5 md:mx-auto lg:mx-0 lg:flex xl:px-0">
             <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
               <PromoBanner
-                src="/banner-home-desktop-02.jpg"
+                src="/banner-home-desktop-02.png"
                 alt="Até 55% de desconto em mouses!"
                 className="w-full"
               />
@@ -71,7 +71,7 @@ export default async function Home() {
 
             <MotionContainer className="w-full lg:w-[49%]" delay={0.4}>
               <PromoBanner
-                src="/banner-home-desktop-03.jpg"
+                src="/banner-home-desktop-03.png"
                 alt="Até 55% de desconto em mouses!"
                 className="w-full"
               />
@@ -80,7 +80,7 @@ export default async function Home() {
 
           <MotionContainer className="px-5 lg:hidden" delay={0.3}>
             <PromoBanner
-              src="/banner-home-02.jpg"
+              src="/banner-home-02.png"
               alt="Até 55% de desconto em mouses!"
             />
           </MotionContainer>
@@ -91,14 +91,14 @@ export default async function Home() {
 
           <MotionContainer className="px-5 lg:hidden" delay={0.5}>
             <PromoBanner
-              src="/banner-home-01.jpg"
+              src="/banner-home-01.png"
               alt="Até 55% de desconto em mouses!"
             />
           </MotionContainer>
 
           <MotionContainer className="hidden px-5 lg:block xl:px-0" delay={0.5}>
             <PromoBanner
-              src="/banner-frete-gratis-desktop.jpg"
+              src="/banner-frete-gratis-desktop.png"
               alt="Até 55% de desconto em frete!"
             />
           </MotionContainer>
