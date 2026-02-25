@@ -24,14 +24,15 @@ const PromoVideo = ({ src, variant = "mobile" }: PromoVideoProps) => {
         className={twMerge(
           "absolute inset-0 z-10 flex w-full",
           variant === "mobile"
-            ? "flex-col gap-4 px-5 items-center justify-end pb-12 text-center uppercase"
+            ? "flex-col items-center justify-end gap-4 px-5 pb-12 text-center uppercase"
             : "items-center",
         )}
       >
-        <div 
+        <div
           className={twMerge(
-             "flex flex-col items-center lg:items-start gap-4 uppercase",
-             variant === "desktop" && "mx-auto w-full max-w-[1280px] justify-center px-5 xl:px-0"
+            "flex flex-col items-center gap-4 uppercase lg:items-start",
+            variant === "desktop" &&
+              "mx-auto w-full max-w-[1280px] justify-center px-5 xl:px-0",
           )}
         >
           <h1 className="line-clamp-2 text-4xl font-semibold tracking-normal sm:max-w-md lg:max-w-2xl">
@@ -42,16 +43,14 @@ const PromoVideo = ({ src, variant = "mobile" }: PromoVideoProps) => {
             Clank
           </div>
           <Link href="/product/playStation-5-slim" className="mt-4 w-60">
-            <Button
-            variant="outline"
-              className="flex w-full gap-2"
-            >
+            <Button variant="outline" className="flex w-full gap-2">
               <ShoppingBag size={16} />
               Ver produto
             </Button>
           </Link>
         </div>
       </div>
+      <div className="absolute bottom-0 h-full w-full bg-gradient-to-t from-background via-background/0 to-transparent lg:hidden" />
     </div>
   );
 };
