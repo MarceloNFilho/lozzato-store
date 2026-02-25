@@ -10,8 +10,9 @@ const PromoBanner = ({ className, alt, ...props }: ImageProps) => {
     <Image
       width={0}
       height={0}
+      sizes="100vw"
       className={twMerge(
-        "h-48 w-full object-cover object-center sm:h-64 lg:h-auto",
+        "h-auto min-h-[150px] w-full object-cover object-center",
         className,
       )}
       style={{

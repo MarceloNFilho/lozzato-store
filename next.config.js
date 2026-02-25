@@ -1,3 +1,5 @@
+const withNextIntl = require("next-intl/plugin")();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,7 +13,5 @@ const nextConfig = {
         hostname: "m4f2ui1c9t.ufs.sh",
       },
     ],
-  }
+  },
 };
-
-module.exports = nextConfig;

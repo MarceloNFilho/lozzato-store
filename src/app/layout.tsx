@@ -3,9 +3,9 @@ import { Outfit, Saira } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/header";
 import { AuthProvider } from "@/providers/auth";
-import Footer from "@/components/ui/footer";
 import CartProvider from "@/providers/cart";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Footer from "@/components/ui/footer";
 
 const saira = Saira({ subsets: ["latin"] });
 
@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${saira.className} dark`}>
-        <div className="flex h-full flex-col">
+        <div className="flex min-h-screen flex-col">
           <AuthProvider>
             <CartProvider>
               <TooltipProvider>
                 <Header />
-                <div className="flex-1">{children}</div>
+                <main className="flex-1">{children}</main>
                 <Footer />
               </TooltipProvider>
             </CartProvider>
