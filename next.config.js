@@ -1,5 +1,3 @@
-const withNextIntl = require("next-intl/plugin")();
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -7,11 +5,15 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "utfs.io",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "m4f2ui1c9t.ufs.sh",
+        pathname: "/**",
       },
     ],
   },
 };
+
+module.exports = nextConfig;
