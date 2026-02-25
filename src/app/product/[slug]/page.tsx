@@ -40,11 +40,15 @@ const ProductDetailsPage = async ({
     <div className="mt-20 flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 lg:mx-auto">
       <div className="flex gap-8 max-xl:px-0 max-lg:flex-col">
         <ProductImages imageUrls={product.imageUrls} name={product.name} />
-        <ProductDetails product={computeProductTotalPrice(product)} />
+        <ProductDetails
+          product={JSON.parse(
+            JSON.stringify(computeProductTotalPrice(product)),
+          )}
+        />
       </div>
       <div>
         <ProductList
-          products={product.category.products}
+          products={JSON.parse(JSON.stringify(product.category.products))}
           title="produtos recomendados"
         />
       </div>

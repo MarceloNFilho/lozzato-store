@@ -1,3 +1,4 @@
+"use client";
 import {
   Accordion,
   AccordionContent,
@@ -52,7 +53,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 Pedido com {order.orderProducts.length} produto(s)
               </p>
               <span className="text-xs opacity-60">
-                Feito em {format(order.createdAt, "d/MM/y 'às' HH:mm")}
+                Feito em{" "}
+                {format(new Date(order.createdAt), "d/MM/y 'às' HH:mm")}
               </span>
             </div>
           </AccordionTrigger>
@@ -70,7 +72,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 <div>
                   <p className="font-bold">Data</p>
                   <p className="opacity-60">
-                    {format(order.createdAt, "d/MM/y")}
+                    {format(new Date(order.createdAt), "d/MM/y")}
                   </p>
                 </div>
 

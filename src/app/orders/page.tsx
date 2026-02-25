@@ -41,7 +41,10 @@ async function OrderPage() {
 
       <div className="mt-5 flex flex-col gap-5">
         {orders.map((order) => (
-          <OrderItem key={order.id} order={order} />
+          <OrderItem
+            key={order.id}
+            order={JSON.parse(JSON.stringify(order))} // Convert Decimals/Dates to plain objects/strings
+          />
         ))}
       </div>
     </div>

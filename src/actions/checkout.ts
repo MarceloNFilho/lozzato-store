@@ -35,5 +35,5 @@ export const createCheckout = async (
     }),
   });
 
-  return checkout;
+  return JSON.parse(JSON.stringify(checkout)) as Stripe.Checkout.Session;
 };

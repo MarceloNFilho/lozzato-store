@@ -57,7 +57,10 @@ export default async function Home() {
           </MotionContainer>
 
           <MotionContainer delay={0.2}>
-            <ProductList title="ofertas" products={productsWithDiscount} />
+            <ProductList
+              title="ofertas"
+              products={JSON.parse(JSON.stringify(productsWithDiscount))}
+            />
           </MotionContainer>
 
           <div className="hidden items-center justify-between gap-6 px-5 md:mx-auto lg:mx-0 lg:flex xl:px-0">
@@ -86,7 +89,10 @@ export default async function Home() {
           </MotionContainer>
 
           <MotionContainer delay={0.4}>
-            <ProductList title="teclados" products={keyboards} />
+            <ProductList
+              title="teclados"
+              products={JSON.parse(JSON.stringify(keyboards))}
+            />
           </MotionContainer>
 
           <MotionContainer className="px-5 lg:hidden" delay={0.5}>
@@ -104,7 +110,10 @@ export default async function Home() {
           </MotionContainer>
 
           <MotionContainer delay={0.6}>
-            <ProductList title="mouses" products={mouses} />
+            <ProductList
+              title="mouses"
+              products={JSON.parse(JSON.stringify(mouses))}
+            />
           </MotionContainer>
         </div>
       </div>
