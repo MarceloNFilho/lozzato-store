@@ -10,7 +10,10 @@ const PromoBanner = ({ className, alt, ...props }: ImageProps) => {
     <Image
       width={0}
       height={0}
-      className={twMerge("h-auto w-full", className)}
+      className={twMerge(
+        "h-48 w-full object-cover object-center sm:h-64 lg:h-auto",
+        className,
+      )}
       style={{
         clipPath:
           "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
