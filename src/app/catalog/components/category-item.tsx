@@ -1,35 +1,44 @@
 import { Category } from "@prisma/client";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 interface CategoryItemProps {
   category: Category;
+  productCount?: number;
 }
 
-const CategoryItem = ({ category }: CategoryItemProps) => {
+const CategoryItem = ({ category, productCount }: CategoryItemProps) => {
   return (
-    <Link href={`/category/${category.slug}`}>
-      <div 
-        className="flex flex-col gap-2 bg-card py-3"
-        style={{
-          clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
-        }}
-      >
-        <div className="flex aspect-square w-full items-center justify-center bg-card">
-          <Image
-            src={category.imageUrl}
-            alt={category.name}
-            width={0}
-            height={0}
-            quality={100}
-            sizes="100vw"
-            className="h-full max-h-[70%] w-auto max-w-[80%] object-contain"
-          />
+    <Link
+      href={`/category/${category.slug}`}
+      className="product-stage chamfer-lg group relative flex aspect-square flex-col justify-between overflow-hidden p-5 md:p-8"
+    >
+      <div className="relative z-10 flex items-start justify-between gap-2">
+        <div className="flex flex-col gap-1">
+          <p className="font-display text-base font-semibold uppercase tracking-[0.1em] md:text-2xl">
+            {category.name}
+          </p>
+          {productCount !== undefined && (
+            <p className="text-xs text-muted-foreground md:text-sm">
+              {productCount} {productCount === 1 ? "produto" : "produtos"}
+            </p>
+          )}
         </div>
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/[0.06] text-foreground/60 transition-all duration-300 ease-premium group-hover:bg-primary group-hover:text-primary-foreground">
+          <ArrowUpRight size={16} />
+        </span>
+      </div>
 
-        <div className="bg-card py-3">
-          <p className="text-center text-sm font-semibold">{category.name}</p>
-        </div>
+      <div className="absolute inset-x-[14%] bottom-[10%] top-[28%]">
+        <Image
+          src={category.imageUrl}
+          alt={category.name}
+          fill
+          quality={100}
+          sizes="(min-width: 768px) 33vw, 50vw"
+          className="object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.12)] transition-transform duration-700 ease-premium group-hover:scale-[1.06]"
+        />
       </div>
     </Link>
   );

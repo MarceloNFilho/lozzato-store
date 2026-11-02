@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import ProductItem from "@/components/ui/product-item";
+import PageHeader from "@/components/ui/page-header";
 import { CATEGORY_ICON } from "@/constants/category-icon";
 import computeProductTotalPrice from "@/helpers/products";
 import { prismaClient } from "@/lib/prisma";
@@ -19,15 +19,20 @@ const CategoryProducts = async ({ params }: any) => {
   }
 
   return (
-    <div className="mt-20 flex max-w-[1280px] flex-col items-center gap-8 max-xl:p-5 lg:mx-auto xl:py-5">
-      <div className="flex w-full items-start">
-        <Badge variant="heading">
-          {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
-          {category.name}
-        </Badge>
-      </div>
+    <div className="page-container flex flex-col gap-12 pb-24">
+      <PageHeader
+        title={category.name}
+        icon={CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
+        breadcrumb={[
+          { label: "Catálogo", href: "/catalog" },
+          { label: category.name },
+        ]}
+        meta={`${category.products.length} ${
+          category.products.length === 1 ? "produto" : "produtos"
+        }`}
+      />
 
-      <div className="grid w-full grid-cols-2 gap-6 max-md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid w-full grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4 xl:grid-cols-5">
         {category.products.map((product) => {
           return (
             <ProductItem

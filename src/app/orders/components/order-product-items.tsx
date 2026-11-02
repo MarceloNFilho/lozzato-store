@@ -1,6 +1,8 @@
 import { computeProductTotalPrice } from "@/helpers/products";
-import { OrderProduct, Prisma } from "@prisma/client";
+import { formatCurrency } from "@/lib/utils";
+import { Prisma } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 interface OrderProductItemProps {
   orderProduct: Prisma.OrderProductGetPayload<{
@@ -14,53 +16,36 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
   const productWithTotalPrice = computeProductTotalPrice(orderProduct.product);
 
   return (
-    <div className="flex items-center gap-4">
-      <div 
-        className="flex h-[77px] w-[100px] items-center justify-center bg-accent"
-        style={{
-          clipPath: "polygon(0.5rem 0px, 100% 0px, 100% calc(100% - 0.5rem), calc(100% - 0.5rem) 100%, 0px 100%, 0px 0.5rem)",
-        }}
+    <div className="flex items-center gap-4 py-4">
+      <Link
+        href={`/product/${orderProduct.product.slug}`}
+        className="product-stage chamfer-sm relative h-20 w-20 shrink-0"
       >
         <Image
           src={orderProduct.product.imageUrls[0]}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-auto max-h-[80%] w-auto max-w-[80%] object-contain"
+          fill
+          sizes="80px"
+          className="object-contain p-[12%]"
           alt={orderProduct.product.name}
         />
+      </Link>
+
+      <div className="flex min-w-0 flex-1 flex-col gap-1">
+        <p className="line-clamp-1 text-sm">{orderProduct.product.name}</p>
+        <p className="text-xs text-muted-foreground">
+          Vendido e entregue por Lozzato Store · Qtd. {orderProduct.quantity}
+        </p>
       </div>
 
-      <div className="flex w-full flex-col gap-1">
-        <div 
-          className="flex w-fit bg-accent px-3 py-1"
-          style={{
-            clipPath: "polygon(0.25rem 0px, 100% 0px, 100% calc(100% - 0.25rem), calc(100% - 0.25rem) 100%, 0px 100%, 0px 0.25rem)",
-          }}
-        >
-          <p className="text-[10px]">
-            Vendido e entregue por{" "}
-            <span className="font-bold">Lozzato Store</span>
+      <div className="flex flex-col items-end">
+        {productWithTotalPrice.discountPercentage > 0 && (
+          <p className="text-[11px] tabular-nums text-muted-foreground line-through">
+            {formatCurrency(Number(productWithTotalPrice.basePrice))}
           </p>
-        </div>
-
-        <p className="text-xs">{orderProduct.product.name}</p>
-
-        <div className="flex w-full items-center justify-between gap-1">
-          <div className="flex items-center gap-1">
-            <p className="text-sm font-bold">
-              R$ {productWithTotalPrice.totalPrice.toFixed(2)}
-            </p>
-
-            {productWithTotalPrice.discountPercentage > 0 && (
-              <p className="text-xs line-through opacity-60">
-                R$ {Number(productWithTotalPrice.basePrice).toFixed(2)}
-              </p>
-            )}
-          </div>
-
-          <p className="text-xs opacity-60">Qntd: {orderProduct.quantity}</p>
-        </div>
+        )}
+        <p className="font-display text-sm font-semibold tabular-nums">
+          {formatCurrency(productWithTotalPrice.totalPrice)}
+        </p>
       </div>
     </div>
   );

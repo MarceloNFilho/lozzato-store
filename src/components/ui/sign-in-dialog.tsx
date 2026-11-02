@@ -10,6 +10,7 @@ import {
   DialogTitle,
 } from "./dialog";
 import { signIn } from "next-auth/react";
+import { LogoSymbol } from "./logo";
 
 interface SignInDialogProps {
   open: boolean;
@@ -23,30 +24,27 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent 
-        className="w-[85%] max-w-[324px]"
-        style={{
-          clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
-        }}
-      >
-        <DialogHeader className="flex gap-0.5">
-          <DialogTitle>Faça login na plataforma</DialogTitle>
-          <DialogDescription>
-            Conecte-se usando sua conta do Google
+      <DialogContent className="w-[90%] max-w-[380px] gap-8">
+        <DialogHeader className="flex flex-col items-center gap-3 text-center sm:text-center">
+          <LogoSymbol className="mb-1 h-9 w-9 text-foreground" />
+          <DialogTitle>Entre na sua conta</DialogTitle>
+          <DialogDescription className="max-w-[260px]">
+            Acompanhe pedidos e finalize compras com mais rapidez.
           </DialogDescription>
         </DialogHeader>
         <Button
-          className="mt-1 flex items-center gap-2"
+          size="md"
+          className="w-full"
           onClick={handleSignInWithGoogleClick}
         >
           <Image
             src="/google.svg"
-            alt="google"
+            alt=""
             width={16}
             height={16}
-            className="brightness-0"
+            className="brightness-0 invert"
           />
-          <p className="text-sm font-bold">Google</p>
+          Continuar com Google
         </Button>
       </DialogContent>
     </Dialog>

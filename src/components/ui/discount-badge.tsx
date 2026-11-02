@@ -1,12 +1,14 @@
-import { ArrowDown } from "lucide-react";
 import { Badge, BadgeProps } from "./badge";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 const DiscountBadge = ({ children, className, ...props }: BadgeProps) => {
   return (
-    <Badge className={twMerge("px-2 py-[2px]", className)} {...props}>
-      <ArrowDown size={14} />
-      {children}%
+    <Badge
+      variant="default"
+      className={cn("tabular-nums", className)}
+      {...props}
+    >
+      -{children}%
     </Badge>
   );
 };

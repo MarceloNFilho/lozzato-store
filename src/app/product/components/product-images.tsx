@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface ProductImagesProps {
   name: string;
@@ -16,51 +17,49 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
   };
 
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="relative h-full">
-        <div 
-          className="flex h-[380px] flex-1 items-center justify-center bg-card lg:h-full"
-          style={{
-            clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
-          }}
-        >
-          <Image
-            src={currentImage}
-            alt={name}
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="h-full max-h-[70%] w-auto max-w-[80%] object-contain"
-          />
-        </div>
+    <div className="flex flex-col gap-4 lg:sticky lg:top-28">
+      <div className="product-stage chamfer-lg relative aspect-square overflow-hidden lg:aspect-[5/4]">
+        <Image
+          key={currentImage}
+          src={currentImage}
+          alt={name}
+          fill
+          priority
+          sizes="(min-width: 1024px) 60vw, 100vw"
+          className="object-contain p-[10%] drop-shadow-[0_30px_40px_rgba(0,0,0,0.12)] duration-500 animate-in fade-in-0 zoom-in-95"
+        />
+      </div>
 
-        <div className="grid gap-4 max-xl:bottom-8 max-xl:flex max-md:mt-8 max-md:grid-cols-4 max-md:px-5 lg:absolute lg:left-1/2 lg:-translate-x-1/2 xl:left-8 xl:top-8 xl:translate-x-0">
-          {imageUrls.map((image) => {
+      {imageUrls.length > 1 && (
+        <div className="no-scrollbar flex gap-3 overflow-x-auto">
+          {imageUrls.map((image, index) => {
+            const isActive = image === currentImage;
             return (
               <button
                 key={image}
-                className={`flex h-20 w-20 items-center justify-center bg-accent lg:bg-background ${
-                  image === currentImage &&
-                  "border-2 border-solid border-primary"
-                }`}
-                style={{
-                  clipPath: "polygon(1rem 0px, 100% 0px, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0px 100%, 0px 1rem)",
-                }}
+                aria-label={`Ver imagem ${index + 1} de ${name}`}
+                aria-pressed={isActive}
+                className={cn(
+                  "product-stage chamfer-sm relative flex h-20 w-20 shrink-0 items-center justify-center transition-opacity duration-300 md:h-24 md:w-24",
+                  isActive ? "opacity-100" : "opacity-50 hover:opacity-80",
+                )}
                 onClick={() => handleSelectedImage(image)}
               >
                 <Image
                   src={image}
-                  alt={name}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+                  alt=""
+                  fill
+                  sizes="96px"
+                  className="object-contain p-[12%]"
                 />
+                {isActive && (
+                  <span className="absolute inset-x-3 bottom-1.5 h-[2px] bg-foreground" />
+                )}
               </button>
             );
           })}
         </div>
-      </div>
+      )}
     </div>
   );
 };

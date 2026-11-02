@@ -9,7 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Order, Prisma } from "@prisma/client";
 import { format } from "date-fns";
 import OrderProductItem from "./order-product-items";
-import { Separator } from "@/components/ui/separator";
+import { cn, formatCurrency } from "@/lib/utils";
 import { useMemo } from "react";
 import { computeProductTotalPrice } from "@/helpers/products";
 import { getOrderStatus } from "../helpers/status";
@@ -43,79 +43,80 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
   const totalDiscounts = subtotal - total;
 
+  const isPaid = order.status === "PAYMENT_CONFIRMED";
+
   return (
-    <Card className="px-5">
+    <Card className="chamfer surface rounded-none border-0 px-5 shadow-none md:px-8">
       <Accordion type="single" className="w-full" collapsible>
-        <AccordionItem value={order.id}>
-          <AccordionTrigger>
-            <div className="flex flex-col gap-1 text-left">
-              <p className="text-sm font-bold uppercase">
-                Pedido com {order.orderProducts.length} produto(s)
-              </p>
-              <span className="text-xs opacity-60">
-                Feito em{" "}
-                {format(new Date(order.createdAt), "d/MM/y 'às' HH:mm")}
-              </span>
+        <AccordionItem value={order.id} className="border-0">
+          <AccordionTrigger className="gap-4 py-6 hover:no-underline">
+            <div className="flex flex-1 flex-col gap-4 text-left md:flex-row md:items-center md:justify-between md:pr-6">
+              <div className="flex flex-col gap-1">
+                <p className="font-display text-sm font-semibold uppercase tracking-[0.12em]">
+                  Pedido #{order.id.slice(-6).toUpperCase()}
+                </p>
+                <span className="text-xs text-muted-foreground">
+                  {format(new Date(order.createdAt), "d/MM/y 'às' HH:mm")} ·{" "}
+                  {order.orderProducts.length}{" "}
+                  {order.orderProducts.length === 1 ? "produto" : "produtos"}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <span
+                  className={cn(
+                    "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
+                    isPaid
+                      ? "bg-success/10 text-success"
+                      : "bg-amber-500/10 text-amber-700",
+                  )}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                  {getOrderStatus(order.status)}
+                </span>
+                <p className="font-display text-base font-semibold tabular-nums">
+                  {formatCurrency(total)}
+                </p>
+              </div>
             </div>
           </AccordionTrigger>
 
           <AccordionContent>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <div className="font-bold">
-                  <p>Status</p>
-                  <p className="text-[#8162FF]">
-                    {getOrderStatus(order.status)}
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-bold">Data</p>
-                  <p className="opacity-60">
-                    {format(new Date(order.createdAt), "d/MM/y")}
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-bold">Pagamento</p>
-                  <p className="opacity-60">Cartão</p>
-                </div>
+            <div className="flex flex-col gap-2 border-t border-border pt-2">
+              <div className="flex flex-col divide-y divide-border">
+                {order.orderProducts.map((orderProduct) => (
+                  <OrderProductItem
+                    key={orderProduct.id}
+                    orderProduct={orderProduct}
+                  />
+                ))}
               </div>
 
-              {order.orderProducts.map((orderProduct) => (
-                <OrderProductItem
-                  key={orderProduct.id}
-                  orderProduct={orderProduct}
-                />
-              ))}
-
-              <div className="flex w-full flex-col gap-1 text-xs">
-                <Separator />
-
-                <div className="flex w-full justify-between py-3">
+              <div className="flex w-full flex-col gap-3 border-t border-border pt-5 text-sm md:ml-auto md:max-w-sm">
+                <div className="flex justify-between text-muted-foreground">
                   <p>Subtotal</p>
-                  <p>R$ {subtotal.toFixed(2)}</p>
+                  <p className="tabular-nums">{formatCurrency(subtotal)}</p>
                 </div>
 
-                <Separator />
+                {totalDiscounts > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <p>Descontos</p>
+                    <p className="tabular-nums text-foreground">
+                      − {formatCurrency(totalDiscounts)}
+                    </p>
+                  </div>
+                )}
 
-                <div className="flex w-full justify-between py-3">
+                <div className="flex justify-between text-muted-foreground">
                   <p>Entrega</p>
-                  <p>GRÁTIS</p>
+                  <p className="text-success">Grátis</p>
                 </div>
 
-                <Separator />
-
-                <div className="flex w-full justify-between py-3">
-                  <p>Descontos</p>
-                  <p>-R$ {totalDiscounts.toFixed(2)}</p>
-                </div>
-
-                <Separator />
-
-                <div className="flex w-full justify-between py-3 text-sm font-bold">
-                  <p>Total</p>
-                  <p>R$ {total.toFixed(2)}</p>
+                <div className="flex justify-between border-t border-border pt-3 font-semibold">
+                  <p>Total · Cartão</p>
+                  <p className="font-display text-base tabular-nums">
+                    {formatCurrency(total)}
+                  </p>
                 </div>
               </div>
             </div>

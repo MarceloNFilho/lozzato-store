@@ -3,6 +3,7 @@ import ProductImages from "../components/product-images";
 import computeProductTotalPrice from "@/helpers/products";
 import ProductDetails from "../components/product-details";
 import ProductList from "@/components/ui/product-list";
+import Breadcrumb from "@/components/ui/breadcrumb";
 
 interface ProductDetailsPageProps {
   params: {
@@ -37,21 +38,37 @@ const ProductDetailsPage = async ({
   }
 
   return (
-    <div className="mt-20 flex max-w-[1280px] flex-col gap-8 max-lg:pb-8 lg:mx-auto">
-      <div className="flex gap-8 max-xl:px-0 max-lg:flex-col">
-        <ProductImages imageUrls={product.imageUrls} name={product.name} />
-        <ProductDetails
-          product={JSON.parse(
-            JSON.stringify(computeProductTotalPrice(product)),
-          )}
+    <div className="flex flex-col gap-24 pb-24 pt-24 md:gap-32 md:pt-28">
+      <div className="page-container flex flex-col gap-8">
+        <Breadcrumb
+          items={[
+            {
+              label: product.category.name,
+              href: `/category/${product.category.slug}`,
+            },
+            { label: product.name },
+          ]}
         />
+
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
+          <ProductImages imageUrls={product.imageUrls} name={product.name} />
+          <ProductDetails
+            categoryName={product.category.name}
+            product={JSON.parse(
+              JSON.stringify(computeProductTotalPrice(product)),
+            )}
+          />
+        </div>
       </div>
-      <div>
+
+      {product.category.products.length > 0 && (
         <ProductList
+          eyebrow="Você também pode gostar"
+          title="Recomendados"
+          href={`/category/${product.category.slug}`}
           products={JSON.parse(JSON.stringify(product.category.products))}
-          title="produtos recomendados"
         />
-      </div>
+      )}
     </div>
   );
 };

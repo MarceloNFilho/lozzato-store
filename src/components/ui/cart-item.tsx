@@ -1,8 +1,9 @@
 import { CartContext, CartProduct } from "@/providers/cart";
-import { ArrowLeft, ArrowRight, TrashIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import Image from "next/image";
-import { Button } from "./button";
 import { useContext } from "react";
+import QuantityStepper from "./quantity-stepper";
+import { formatCurrency } from "@/lib/utils";
 
 interface CartItemProps {
   product: CartProduct;
@@ -28,67 +29,50 @@ const CartItem = ({ product }: CartItemProps) => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <div 
-        className="flex h-[84px] w-[84px] items-center justify-center bg-accent"
-        style={{
-          clipPath: "polygon(0.5rem 0px, 100% 0px, 100% calc(100% - 0.5rem), calc(100% - 0.5rem) 100%, 0px 100%, 0px 0.5rem)",
-        }}
-      >
+    <div className="flex gap-4 py-5">
+      <div className="product-stage chamfer-sm relative h-24 w-24 shrink-0">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+          fill
+          sizes="96px"
+          className="object-contain p-[12%]"
         />
       </div>
 
-      <div className="flex w-full flex-1 flex-col">
-        <p className="max-w-[90%] overflow-hidden text-ellipsis whitespace-nowrap text-xs">
-          {product.name}
-        </p>
-
-        <div className="flex items-center gap-2">
-          <p className="text-sm font-bold">R${product.totalPrice.toFixed(2)}</p>
-          {product.discountPercentage > 0 && (
-            <p className="text-xs line-through opacity-75">
-              R$ {Number(product.basePrice).toFixed(2)}
-            </p>
-          )}
-        </div>
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <Button
-              size="icon"
-              variant="outline"
-              className="h-8 w-8"
-              onClick={handleDecreaseProductQuantityClick}
-            >
-              <ArrowLeft size={16} />
-            </Button>
-
-            <span className="text-xs">{product.quantity}</span>
-
-            <Button
-              size="icon"
-              variant="outline"
-              className="h-8 w-8"
-              onClick={handleIncreaseProductQuantityClick}
-            >
-              <ArrowRight size={16} />
-            </Button>
-          </div>
-
-          <Button
-            size="icon"
-            variant="outline"
-            className="h-8 w-8"
+      <div className="flex min-w-0 flex-1 flex-col justify-between">
+        <div className="flex items-start justify-between gap-3">
+          <p className="line-clamp-2 text-sm leading-snug text-foreground/90">
+            {product.name}
+          </p>
+          <button
+            aria-label={`Remover ${product.name}`}
             onClick={handleRemoveProductFromCartClick}
+            className="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-black/[0.08] hover:text-foreground"
           >
-            <TrashIcon size={16} />
-          </Button>
+            <XIcon size={14} />
+          </button>
+        </div>
+
+        <div className="mt-3 flex items-end justify-between gap-3">
+          <QuantityStepper
+            size="sm"
+            min={0}
+            value={product.quantity}
+            onDecrease={handleDecreaseProductQuantityClick}
+            onIncrease={handleIncreaseProductQuantityClick}
+          />
+
+          <div className="flex flex-col items-end">
+            {product.discountPercentage > 0 && (
+              <p className="text-[11px] tabular-nums text-muted-foreground line-through">
+                {formatCurrency(Number(product.basePrice) * product.quantity)}
+              </p>
+            )}
+            <p className="font-display text-sm font-semibold tabular-nums">
+              {formatCurrency(product.totalPrice * product.quantity)}
+            </p>
+          </div>
         </div>
       </div>
     </div>

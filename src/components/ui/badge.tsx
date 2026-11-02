@@ -4,19 +4,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "chamfer-xs inline-flex items-center gap-1 px-2.5 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
   {
     variants: {
       variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
-        heading:
-          "w-fit gap-1 border-2 border-primary px-3 py-[0.375rem] text-xs uppercase",
+        default: "bg-primary text-primary-foreground",
+        secondary: "bg-black/[0.08] text-foreground",
+        destructive: "bg-destructive text-destructive-foreground",
+        outline: "bg-black/[0.04] text-muted-foreground",
+        heading: "w-fit gap-1.5 bg-black/[0.06] px-3 py-1.5 text-foreground",
       },
     },
     defaultVariants: {
@@ -31,13 +27,7 @@ export interface BadgeProps
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <div 
-      className={cn(badgeVariants({ variant }), className)} 
-      style={{
-        clipPath: "polygon(0.5rem 0px, 100% 0px, 100% calc(100% - 0.5rem), calc(100% - 0.5rem) 100%, 0px 100%, 0px 0.5rem)",
-      }}
-      {...props} 
-    />
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   );
 }
 
