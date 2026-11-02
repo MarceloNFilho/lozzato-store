@@ -50,7 +50,7 @@ const ProductDetailsPage = async ({
           ]}
         />
 
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
           <ProductImages imageUrls={product.imageUrls} name={product.name} />
           <ProductDetails
             categoryName={product.category.name}

@@ -3,14 +3,14 @@ const Loading = () => {
     <div className="page-container flex animate-pulse flex-col gap-8 pb-24 pt-24 md:pt-28">
       <div className="h-3 w-48 rounded-full bg-black/[0.05]" />
 
-      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_460px]">
         <div className="flex flex-col gap-4">
           <div className="chamfer-lg aspect-square bg-black/[0.04] lg:aspect-[5/4]" />
-          <div className="flex gap-3">
+          <div className="grid grid-cols-4 gap-3 sm:flex">
             {Array.from({ length: 4 }).map((_, index) => (
               <div
                 key={index}
-                className="chamfer-sm h-20 w-20 bg-black/[0.04] md:h-24 md:w-24"
+                className="chamfer-sm aspect-square w-full bg-black/[0.04] sm:h-20 sm:w-20 md:h-24 md:w-24"
               />
             ))}
           </div>

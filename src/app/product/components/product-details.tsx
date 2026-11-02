@@ -70,18 +70,19 @@ const ProductDetails = ({ product, categoryName }: ProductDetailsProps) => {
           value={quantity}
           onDecrease={handleDecreaseQuantity}
           onIncrease={handleIncreaseQuantity}
-          className="h-12 [&>button]:h-12"
+          className="h-12 shrink-0 [&>button]:h-12"
         />
 
         <Sheet>
           <SheetTrigger asChild>
             <Button
               size="md"
-              className="flex-1"
+              className="min-w-0 flex-1 px-4 sm:px-8"
               onClick={HandleAddProductToCart}
             >
               <ShoppingBagIcon size={16} />
-              Adicionar ao carrinho
+              <span className="sm:hidden">Adicionar</span>
+              <span className="hidden sm:inline">Adicionar ao carrinho</span>
             </Button>
           </SheetTrigger>
 

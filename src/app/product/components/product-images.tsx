@@ -31,7 +31,7 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
       </div>
 
       {imageUrls.length > 1 && (
-        <div className="no-scrollbar flex gap-3 overflow-x-auto">
+        <div className="grid grid-cols-4 gap-3 sm:flex">
           {imageUrls.map((image, index) => {
             const isActive = image === currentImage;
             return (
@@ -40,7 +40,7 @@ const ProductImages = ({ name, imageUrls }: ProductImagesProps) => {
                 aria-label={`Ver imagem ${index + 1} de ${name}`}
                 aria-pressed={isActive}
                 className={cn(
-                  "product-stage chamfer-sm relative flex h-20 w-20 shrink-0 items-center justify-center transition-opacity duration-300 md:h-24 md:w-24",
+                  "product-stage chamfer-sm relative flex aspect-square w-full shrink-0 items-center justify-center transition-opacity duration-300 sm:h-20 sm:w-20 md:h-24 md:w-24",
                   isActive ? "opacity-100" : "opacity-50 hover:opacity-80",
                 )}
                 onClick={() => handleSelectedImage(image)}
